@@ -27,6 +27,7 @@ SELECT
         WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2000 THEN 1
         ELSE NULL
     END) AS '2000',
+    '...' AS '...',
     COUNT(CASE
         WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2012 THEN 1
         ELSE NULL
@@ -52,12 +53,12 @@ And the result is something similar to
 | Japan 							    | JP            | 452669| ....  | 44164 |       |
 | United States of America 			    | US            | 321117| ....  | 143725|       |
 
-| appln_name | appln_auth | 2000 | 2012 | total | 
-| --- | --- | --- | --- | --- |
-| United States of America | US | 321117 | 379385 | 6854690 | 
-| Japan | JP | 452669 | 220358 | 6317461 | 
-| European Patent Office | EP | 126921 | 88789 | 1963223 | 
-| African Regional Intellectual Property Organization | AP | 304 | 220 | 4955 | 
+| appln_name | appln_auth | 2000 | ...  | 2012 | total | 
+| --- | --- | --- | --- | --- | --- |
+| United States of America | US | 321117 | ...  | 379385 | 6854690 | 
+| Japan | JP | 452669 | 220358 | ...  | 6317461 | 
+| European Patent Office | EP | 126921 | ...  | 88789 | 1963223 | 
+| African Regional Intellectual Property Organization | AP | 304 | ...  | 220 | 4955 | 
 
 In this case you can modify the dates and the patent office list how you requieres.
 
