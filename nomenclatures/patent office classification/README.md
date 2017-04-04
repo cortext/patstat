@@ -46,19 +46,12 @@ ORDER BY total DESC;
 
 And the result is something similar to
 
-| appln_name    						| appln_auth    | 2000  | ....  | 2013  | TOTAL	|		
-| --------------------------------------|:-------------:| :----:|:-----:|:-----:|:-----:|
-| African Regional Intellectual Prope...| AP		    | 304   | ....  |  51   | 	    |
-| European Patent Office     			| EP            | 126921| ....  | 30483 |       |
-| Japan 							    | JP            | 452669| ....  | 44164 |       |
-| United States of America 			    | US            | 321117| ....  | 143725|       |
-
-| appln_name | appln_auth | 2000 | ...  | 2012 | total | 
+| appln_name | appln_auth | 2000 | ... | 2012 | total | 
 | --- | --- | --- | --- | --- | --- |
-| United States of America | US | 321117 | ...  | 379385 | 6854690 | 
-| Japan | JP | 452669 | 220358 | ...  | 6317461 | 
-| European Patent Office | EP | 126921 | ...  | 88789 | 1963223 | 
-| African Regional Intellectual Property Organization | AP | 304 | ...  | 220 | 4955 | 
+| United States of America | US | 321117 | ... | 379385 | 6854690 | 
+| Japan | JP | 452669 | 220358 | ... | 6317461 | 
+| European Patent Office | EP | 126921 | ... | 88789 | 1963223 | 
+| African Regional Intellectual Property Organization | AP | 304 | ... | 220 | 4955 | 
 
 In this case you can modify the dates and the patent office list how you requieres.
 
