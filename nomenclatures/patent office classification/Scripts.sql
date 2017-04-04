@@ -27,44 +27,62 @@ ORDER BY COUNT(*) DESC
 -- http://ip-science.thomsonreuters.com/m/pdfs/dwpicovkinds/wipo_codes.pdf
  
 /*
-  2. Query the total amount of patents (applications) for the pan-African offices:
+  2. Query the total amount of patents (applications) by patent office:
 
     - 2.1 : Number patents per year for each patent office from the application year 2000 (including 2000)
 */
 
 SELECT 
-    COUNT(*),
-    appln_name,
+    auth_name,
     patstatAvr2014.tls201_appln.appln_auth,
-    YEAR(appln_filing_date) AS year_appln
+    COUNT(CASE
+        WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2000 THEN 1
+        ELSE NULL
+    END) AS '2000',
+    '...' AS '...',
+    COUNT(CASE
+        WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2012 THEN 1
+        ELSE NULL
+    END) AS '2012',
+    COUNT(*) AS total
 FROM
     patstatAvr2014.tls201_appln
         INNER JOIN
     nomen_appln_auth ON patstatAvr2014.tls201_appln.appln_auth = nomen_appln_auth.appln_auth
 WHERE
     YEAR(patstatAvr2014.tls201_appln.appln_filing_date) >= '2000'
-        AND patstatAvr2014.tls201_appln.appln_auth IN ('AP' , 'CF', 'OA')
-GROUP BY YEAR(appln_filing_date) , patstatAvr2014.tls201_appln.appln_auth;
+        AND patstatAvr2014.tls201_appln.appln_auth IN ('JP' , 'US', 'EP', 'AP')
+GROUP BY patstatAvr2014.tls201_appln.appln_auth
+ORDER BY total DESC;
 
 /*
-  2. Query the total amount of patents (applications) for the pan-African offices:
+  2. Query the total amount of patents (applications) by patent office:
 
     - 2.2: Based on 2.1, ipr_type = “PI” and appln_kind IN (“A”, “W”)
 
 */
 
 SELECT 
-    COUNT(*),
-    appln_name,
+    auth_name,
     patstatAvr2014.tls201_appln.appln_auth,
-    YEAR(appln_filing_date) AS year_appln
+    COUNT(CASE
+        WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2000 THEN 1
+        ELSE NULL
+    END) AS '2000',
+    '...' AS '...',
+    COUNT(CASE
+        WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2012 THEN 1
+        ELSE NULL
+    END) AS '2012',
+    COUNT(*) AS total
 FROM
     patstatAvr2014.tls201_appln
         INNER JOIN
     nomen_appln_auth ON patstatAvr2014.tls201_appln.appln_auth = nomen_appln_auth.appln_auth
 WHERE
     YEAR(patstatAvr2014.tls201_appln.appln_filing_date) >= '2000'
-        AND patstatAvr2014.tls201_appln.appln_auth IN ('AP' , 'CF', 'OA')
+        AND patstatAvr2014.tls201_appln.appln_auth IN ('JP' , 'US', 'EP', 'AP')
 		AND patstatAvr2014.tls201_appln.ipr_type = 'PI'
         AND patstatAvr2014.tls201_appln.appln_kind IN ('A' , 'W')
-GROUP BY YEAR(appln_filing_date) , patstatAvr2014.tls201_appln.appln_auth;
+GROUP BY patstatAvr2014.tls201_appln.appln_auth
+ORDER BY total DESC;

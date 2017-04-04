@@ -21,7 +21,7 @@ You can use and modify any of these queries for your own purpose, for example th
 
 ```sql
 SELECT 
-    appln_name,
+    auth_name,
     patstatAvr2014.tls201_appln.appln_auth,
     COUNT(CASE
         WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2000 THEN 1
