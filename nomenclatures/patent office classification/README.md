@@ -21,18 +21,26 @@ You can use and modify any of these queries for your own purpose, for example th
 
 ```sql
 SELECT 
-    COUNT(*),
     appln_name,
     patstatAvr2014.tls201_appln.appln_auth,
-    YEAR(appln_filing_date) AS year_appln
+    COUNT(CASE
+        WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2000 THEN 1
+        ELSE NULL
+    END) AS '2000',
+    COUNT(CASE
+        WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2012 THEN 1
+        ELSE NULL
+    END) AS '2012',
+    COUNT(*) AS total
 FROM
     patstatAvr2014.tls201_appln
         INNER JOIN
     nomen_appln_auth ON patstatAvr2014.tls201_appln.appln_auth = nomen_appln_auth.appln_auth
 WHERE
     YEAR(patstatAvr2014.tls201_appln.appln_filing_date) >= '2000'
-        AND patstatAvr2014.tls201_appln.appln_auth IN ('AP' , 'CF', 'OA')
-GROUP BY YEAR(appln_filing_date) , patstatAvr2014.tls201_appln.appln_auth;
+        AND patstatAvr2014.tls201_appln.appln_auth IN ('JP' , 'US', 'EP', 'AP')
+GROUP BY patstatAvr2014.tls201_appln.appln_auth
+ORDER BY total DESC;
 ```
 
 And the result is something similar to
@@ -43,6 +51,13 @@ And the result is something similar to
 | European Patent Office     			| EP            | 126921| ....  | 30483 |       |
 | Japan 							    | JP            | 452669| ....  | 44164 |       |
 | United States of America 			    | US            | 321117| ....  | 143725|       |
+
+| appln_name | appln_auth | 2000 | 2012 | total | 
+| --- | --- | --- | --- | --- |
+| United States of America | US | 321117 | 379385 | 6854690 | 
+| Japan | JP | 452669 | 220358 | 6317461 | 
+| European Patent Office | EP | 126921 | 88789 | 1963223 | 
+| African Regional Intellectual Property Organization | AP | 304 | 220 | 4955 | 
 
 In this case you can modify the dates and the patent office list how you requieres.
 
