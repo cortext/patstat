@@ -1,23 +1,23 @@
 # Enriching Patstat : Patent Office names nomenclature
-Ressources and scripts to add a Patent offices name nomenclature table, based on the names provided by [EPFL](https://wiki.epfl.ch/patstat/documents/country/country_codes.txt) and a list of usefull queries for the research.
+Ressources (usefull queries and examples) and scripts to add a Patent offices name nomenclature table, based on the names provided by [EPFL](https://wiki.epfl.ch/patstat/documents/country/country_codes.txt).
 
-##  Nomen_appln_codes_create_process.sql
+##  01_nomen_auth_names_create.sql
 Inside the file we explained all process for the different tasks that was done to create and update the patent offices nomenclature table.
 
-##  Nomen_appln_codes_dump.sql
-The easiest way to import the structure and the data from the updated patents office nomenclatures table.
+##  02_nomen_auth_names_dump.sql
+The easiest way to import the structure and the data from the updated patents offices nomenclature table.
 
-##  Scripts.sql
-Here is the descriptions list for the queries that are inside the scripts.sql file
+##  03_nomen_auth_names_stat.sql
+Exploitation of the table built, with examples to show some basic descriptive statistics.
 
 * 1.1 Compare the codes from nomen_appln_auth table and the patstat table to find a missing codes.  
 * 1.2 Calculate the total number of patents for each appln_auth and order it.
 * 2.1 Number patents per year for each patent office (Pan-AFRICA offices) from the application year 2000 (including 2000)
 * 2.2 Based on 2.1, ipr_type = “PI” and appln_kind IN (“A”, “W”)
 
-##  Result
+##  Example: number of applications per year and per patent office (only with a subselection of 4 offices)
 
-You can use and modify any of these queries for your own purpose, for example the next one returns the number patents per year for each office, from the application year 2000 (including 2000)
+You can use and modify any of these queries for your own purpose, for example the next one returns the number patents per year for each office, from the application year 2000 (including 2000).
 
 ```sql
 SELECT 
@@ -39,12 +39,12 @@ FROM
     nomen_appln_auth ON patstatAvr2014.tls201_appln.appln_auth = nomen_appln_auth.appln_auth
 WHERE
     YEAR(patstatAvr2014.tls201_appln.appln_filing_date) >= '2000'
-        AND patstatAvr2014.tls201_appln.appln_auth IN ('JP' , 'US', 'EP', 'AP')
+    AND patstatAvr2014.tls201_appln.appln_auth IN ('JP' , 'US', 'EP', 'AP')
 GROUP BY patstatAvr2014.tls201_appln.appln_auth
 ORDER BY total DESC;
 ```
 
-And the result is something similar to
+Number of application per year for JPO, USPTO, EPO and African Regional Intellectual Property Organization
 
 | appln_name | appln_auth | 2000 | ... | 2012 | total | 
 | --- | --- | --- | --- | --- | --- |
@@ -53,5 +53,4 @@ And the result is something similar to
 | European Patent Office | EP | 126921 | ... | 88789 | 1963223 | 
 | African Regional Intellectual Property Organization | AP | 304 | ... | 220 | 4955 | 
 
-In this case you can modify the dates and the patent office list how you requieres.
-
+Modify the query (years, patent offices list) to produce someting more relevant for you.
