@@ -1,16 +1,18 @@
+
+
 -- USE 'your_own_database_name';
-USE 't_juan';
+USE 'your_own_database_name';
 
 
 -- 1.1 Compare the codes from nomen_appln_auth table and the patstat table to find missing codes.
 
 SELECT 
-    patstatAvr2014.tls201_appln.*
+    *
 FROM
-    patstatAvr2014.tls201_appln AS a
+    tls201_appln AS a
         LEFT JOIN
     nomen_appln_auth AS b 
-    ON (a.appln_auth = b.appln_auth)
+    ON a.appln_auth = b.appln_auth
 WHERE
     b.appln_auth IS NULL
 GROUP BY a.appln_auth;
@@ -18,14 +20,11 @@ GROUP BY a.appln_auth;
 -- 1.2 Calculate the total number of patents for each appln_auth and order it.
 
 SELECT 
-    COUNT(*), patstatAvr2014.tls201_appln.appln_auth
+    COUNT(*),a.appln_auth
 FROM
-    patstatAvr2014.tls201_appln
-GROUP BY patstatAvr2014.tls201_appln.appln_auth
-ORDER BY COUNT(*) DESC
- 
--- http://www.thomsonfilehistories.com/docs/RESOURCES_Kind%20Codes%20by%20Country.pdf
--- http://ip-science.thomsonreuters.com/m/pdfs/dwpicovkinds/wipo_codes.pdf
+    tls201_appln AS a
+GROUP BY a.appln_auth
+ORDER BY COUNT(*) DESC;
  
 /*
   2. Query the total amount of patents (applications) by patent office:
@@ -47,7 +46,7 @@ SELECT
     END) AS '2012',
     COUNT(*) AS total
 FROM
-    patstatAvr2014.tls201_appln AS a
+    tls201_appln AS a
         INNER JOIN
     nomen_appln_auth AS b 
     ON a.appln_auth = b.appln_auth
@@ -78,7 +77,7 @@ SELECT
     END) AS '2012',
     COUNT(*) AS total
 FROM
-    patstatAvr2014.tls201_appln AS a
+    tls201_appln AS a
         INNER JOIN
     nomen_appln_auth AS b 
     ON a.appln_auth = b.appln_auth

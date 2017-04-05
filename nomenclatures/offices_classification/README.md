@@ -47,7 +47,7 @@ ORDER BY total DESC;
 
 Number of application per year for JPO, USPTO, EPO and African Regional Intellectual Property Organization
 
-| appln_name | appln_auth | 2000 | ... | 2012 | total | 
+| auth_name | appln_auth | 2000 | ... | 2012 | total | 
 | --- | --- | --- | --- | --- | --- |
 | United States of America | US | 321117 | ... | 379385 | 6854690 | 
 | Japan | JP | 452669 | ... | 220358 | 6317461 | 
