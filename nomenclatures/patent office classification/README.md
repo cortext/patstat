@@ -1,8 +1,8 @@
-# Setting up a MySQL database from the Patents office nomenclatures 
-MySQL script to build the Patent offices nomenclatures database, based on the text file from (https://wiki.epfl.ch/patstat/documents/country/country_codes.txt).and a list of helpful queries for the research
+# Enriching Patstat : Patent Office names nomenclature
+Ressources and scripts to add a Patent offices name nomenclature table, based on the names provided by [EPFL](https://wiki.epfl.ch/patstat/documents/country/country_codes.txt) and a list of usefull queries for the research.
 
 ##  Nomen_appln_codes_create_process.sql
-Inside the file we explained all process from the different tasks that was done for create and update the patents office nomenclature table 
+Inside the file we explained all process for the different tasks that was done to create and update the patent offices nomenclature table.
 
 ##  Nomen_appln_codes_dump.sql
 The easiest way to import the structure and the data from the updated patents office nomenclatures table.
