@@ -21,26 +21,27 @@ You can use and modify any of these queries for your own purpose, for example th
 
 ```sql
 SELECT 
-    auth_name,
-    patstatAvr2014.tls201_appln.appln_auth,
+    b.auth_name,
+    a.appln_auth,
     COUNT(CASE
-        WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2000 THEN 1
+        WHEN YEAR(a.appln_filing_date) = 2000 THEN 1
         ELSE NULL
     END) AS '2000',
     '...' AS '...',
     COUNT(CASE
-        WHEN YEAR(patstatAvr2014.tls201_appln.appln_filing_date) = 2012 THEN 1
+        WHEN YEAR(a.appln_filing_date) = 2012 THEN 1
         ELSE NULL
     END) AS '2012',
     COUNT(*) AS total
 FROM
-    patstatAvr2014.tls201_appln
+    patstatAvr2014.tls201_appln AS a
         INNER JOIN
-    nomen_appln_auth ON patstatAvr2014.tls201_appln.appln_auth = nomen_appln_auth.appln_auth
+    nomen_appln_auth AS b 
+    ON a.appln_auth = b.appln_auth
 WHERE
-    YEAR(patstatAvr2014.tls201_appln.appln_filing_date) >= '2000'
-    AND patstatAvr2014.tls201_appln.appln_auth IN ('JP' , 'US', 'EP', 'AP')
-GROUP BY patstatAvr2014.tls201_appln.appln_auth
+    YEAR(a.appln_filing_date) >= '2000'
+    AND a.appln_auth IN ('JP' , 'US', 'EP', 'AP')
+GROUP BY a.appln_auth
 ORDER BY total DESC;
 ```
 
