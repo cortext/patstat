@@ -1,19 +1,37 @@
 # Enriching Patstat : Patent Office names nomenclature
 Ressources (usefull queries and examples) and scripts to add a Patent offices name nomenclature table, based on the names provided by [EPFL](https://wiki.epfl.ch/patstat/documents/country/country_codes.txt).
 
-##  01_nomen_auth_names_create.sql
-Inside the file we explained all process for the different tasks that was done to create and update the patent offices nomenclature table.
+##  01_nomen_auth_names_create
+Inside this SQL script file we explaine all the different steps that have been done to create and update the patent offices nomenclature table.
 
-##  02_nomen_auth_names_dump.sql
+##  02_nomen_auth_names_dump
 The easiest way to import the structure and the data from the updated patents offices nomenclature table.
 
-##  03_nomen_auth_names_stat.sql
+##  03_nomen_auth_names_stat
 Exploitation of the table built, with examples to show some basic descriptive statistics.
 
 * 1.1 Compare the codes from nomen_appln_auth table and the patstat table to find a missing codes.  
 * 1.2 Calculate the total number of patents for each appln_auth and order it.
 * 2.1 Number patents per year for each patent office (Pan-AFRICA offices) from the application year 2000 (including 2000)
 * 2.2 Based on 2.1, ipr_type = “PI” and appln_kind IN (“A”, “W”)
+
+##  What is inside
+```sql
+CREATE TABLE `nomen_appln_auth` (
+  `appln_auth` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `auth_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `acronym` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`appln_auth`),
+  KEY `i01` (`auth_name` ASC),
+  KEY `i02` (`appln_auth` ASC, `auth_name` ASC)
+)
+```
+Where status can take: 
+* 'in use' all code (i.e. country codes or patent office codes) that are in use, following the ISO Norm [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2);
+* 'deprecate' all `appln_auth` that are not any more in use (e.g. 'CS' for 'Serbia and Montenegro' or 'SU' for 'Soviet Union' or 'DD' for 'German Democratic Republic'). Depending on the time stamp you are looking for, some of this code represent a large amount of patents (e.g. 'DD' or 'SU');
+* 'unknown' only for a few patents with 'ZZ' as `appln_auth`.
+
 
 ##  Example: number of applications per year and per patent office (only with a subselection of 4 offices)
 
