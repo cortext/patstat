@@ -1,5 +1,5 @@
 # Enriching Patstat : Patent Office names nomenclature
-Ressources (usefull queries and examples) and scripts to add in Pastat full names and acronyms of all Patent Offices. It is based on the names provided by [EPFL](https://wiki.epfl.ch/patstat/documents/country/country_codes.txt).
+Ressources (usefull queries and examples) and scripts to add in Patstat full names and acronyms of all Patent Offices. It is based on the names provided by [EPFL](https://wiki.epfl.ch/patstat/documents/country/country_codes.txt).
 
 ##  What is inside?
 ```sql
