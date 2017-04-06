@@ -32,7 +32,6 @@ Where status can take:
 * 'deprecate' all `appln_auth` that are not any more in use (e.g. 'CS' for 'Serbia and Montenegro' or 'SU' for 'Soviet Union' or 'DD' for 'German Democratic Republic'). Depending on the time stamp you are looking for, some of this code represent a large amount of patents (e.g. 'DD' or 'SU');
 * 'unknown' only for a few patents with 'ZZ' as `appln_auth`.
 
-
 ##  Example: number of applications per year and per patent office (only with a subselection of 4 offices)
 
 You can use and modify any of these queries for your own purpose, for example the next one returns the number patents per year for each office, from the application year 2000 (including 2000).
@@ -72,4 +71,4 @@ Number of application per year for JPO, USPTO, EPO and African Regional Intellec
 | European Patent Office | EP | 126921 | ... | 88789 | 1963223 | 
 | African Regional Intellectual Property Organization | AP | 304 | ... | 220 | 4955 | 
 
-Modify the query (years, patent offices list) to produce someting more relevant for you.
+Modify the query (years, patent offices list) according to what to want to calculate.
