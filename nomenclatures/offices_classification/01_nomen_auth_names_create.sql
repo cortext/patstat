@@ -54,7 +54,8 @@ GROUP BY a.appln_auth;
 -- i.e. addind new appln_auth that exist in patstat but not in the csv list 
 
 LOCK TABLES `nomen_appln_auth` WRITE;
-/*!40000 ALTER TABLE `nomen_appln_auth` DISABLE KEYS */;
+ALTER TABLE `nomen_appln_auth` DISABLE KEYS;
+
 UPDATE `nomen_appln_auth` SET `auth_name`='Serbia and Montenegro', `status`='deprecate' WHERE `appln_auth` ='CS';
 UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='unknown' WHERE `appln_auth` ='ZZ';
 UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='deprecate' WHERE `appln_auth` ='11';
@@ -70,8 +71,6 @@ UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='deprecate' WHERE 
 UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='deprecate' WHERE `appln_auth` ='XP';
 UPDATE `nomen_appln_auth` SET `auth_name`='Yugoslavia', `status`='deprecate' WHERE `appln_auth` ='YU';
 UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='deprecate' WHERE `appln_auth` ='ZR';
-/*!40000 ALTER TABLE `nomen_appln_auth` ENABLE KEYS */;
-UNLOCK TABLES;
 
 -- Useful information, acronyms and cleaning
 UPDATE `nomen_appln_auth` SET `nomen_appln_auth`='' WHERE `appln_auth`='EH';
@@ -84,3 +83,6 @@ UPDATE `nomen_appln_auth` SET `auth_name`='World Intellectual Property Organizat
 UPDATE `nomen_appln_auth` SET `acronym`='IPO' WHERE `appln_auth`='GB';
 UPDATE `nomen_appln_auth` SET `auth_name`='German Patent and Trade Mark Office', `acronym`='DPMA' WHERE `appln_auth`='DE';
 UPDATE `nomen_appln_auth` SET `auth_name`='United States Patent and Trademark Office', `acronym`='USPTO' WHERE `appln_auth`='US';
+
+ALTER TABLE `nomen_appln_auth` ENABLE KEYS;
+UNLOCK TABLES;
