@@ -73,7 +73,7 @@ UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='deprecate' WHERE 
 /*!40000 ALTER TABLE `nomen_appln_auth` ENABLE KEYS */;
 UNLOCK TABLES;
 
--- Usefull information, acronyms and cleaning
+-- Useful information, acronyms and cleaning
 UPDATE `nomen_appln_auth` SET `nomen_appln_auth`='' WHERE `appln_auth`='EH';
 UPDATE `nomen_appln_auth` SET `acronym`='' WHERE `appln_auth`='IR';
 UPDATE `nomen_appln_auth` SET `acronym`='' WHERE `appln_auth`='VG';
