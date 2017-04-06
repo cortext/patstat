@@ -71,6 +71,7 @@ UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='deprecate' WHERE 
 UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='deprecate' WHERE `appln_auth` ='XP';
 UPDATE `nomen_appln_auth` SET `auth_name`='Yugoslavia', `status`='deprecate' WHERE `appln_auth` ='YU';
 UPDATE `nomen_appln_auth` SET `auth_name`='Unknown', `status`='deprecate' WHERE `appln_auth` ='ZR';
+UPDATE `nomen_appln_auth` SET `auth_name`='Falkland Islands Malvinas', `acronym`='' WHERE `appln_auth`='FK';
 
 -- Useful information, acronyms and cleaning
 UPDATE `nomen_appln_auth` SET `nomen_appln_auth`='' WHERE `appln_auth`='EH';
