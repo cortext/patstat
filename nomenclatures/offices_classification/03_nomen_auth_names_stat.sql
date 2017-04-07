@@ -1,7 +1,14 @@
+-- ---------------------------------------------------------------------------------
+-- Gnupablo and Lionel Villard
+-- 2017/04/07
+-- Examples of queries for the nomenclature patent offices names
+--
+-- ---------------------------------------------------------------------------------
 
+-- ---------------------------------------------------------------------------------
+-- Database
 
--- USE 'your_own_database_name';
-USE 'your_own_database_name';
+USE `your_database`;
 
 
 -- 1.1 Compare the codes from nomen_appln_auth table and the patstat table to find missing codes.
