@@ -9,7 +9,7 @@ But despite the detailed methodological guidance provided by its producers and b
 Building on competencies accumulated over the years and mobilising dedicated resources, IFRIS UPEM, as a research centre specialised in quantitative STI, has incorporated in the PATSTAT-IFRIS database a series of improvements, stemming from outside providers (OECD) or from its own proprietary developments.
 
 ## What is Patstat-IFRIS 
-PATSTAT-IFRIS is a patent database that has been set up using the European Patent Office (EPO) Worldwide Patent Statistical Database, henceforth PATSTAT developed by the European Patent Office. The conceptual model of the database offers the ability to manipulate relations between more than 30 tables. Each table contains a set of variables that anable studying several analitical dimension: contents (title, abstract...), knowledge dynamics (bibliographical links for science and technology, fine grained description of the technological fields...), organisation (intellectual property through applicant names), geography (localisation of the inventions and collaborations)...
+PATSTAT-IFRIS is a patent database that has been set up using the European Patent Office (EPO) Worldwide Patent Statistical Database, henceforth PATSTAT developed by the European Patent Office. The conceptual model of the database offers the ability to manipulate relations between more than 30 tables. Each table contains a set of variables that enable studying several analytical dimensions: contents (title, abstract...), knowledge dynamics (bibliographical links for science and technology, fine grained description of the technological fields...), organisation (intellectual property through applicant names), geography (localisation of the inventions and collaborations)...
 
 But PATSTAT-IFRIS is as well an augmented version of the generic PATSTAT database in the sense that it includes a series of enrichment thanks to the filling of information missing in the initial PATSTAT database (e.g: addresses), the harmonisation of raw information from the initial PATSTAT database (e.g: country information) and the addition of new information (e.g: technological classification).
 
@@ -23,6 +23,6 @@ With ten years of accumulation of scripts and methods, we have been used differe
 The scripts and methods that are presented here are made for the last version.
 
 The emphasis has been put on three long term kind of enrichments:
-* New varaibles: inside tables, something with a cleaning step, to make the production of statistics easier; 
+* New variables: inside tables, something with a cleaning step, to make the production of statistics easier; 
 * Enrichments: new values from external sources or from an internal propagations (e.g. addresses...);
-* New analitical dimensions: completely new tables to make your analysis reacher (e.g. technologies...).
+* New analytical dimensions: completely new tables to make your analysis richer (e.g. technologies...).
