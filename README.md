@@ -20,9 +20,7 @@ With ten years of work on patent statistics, we have been used several versions 
 * Patstat 2014, April (production database).
 For each iteration, as a starting point, the Patstat database is set up. Based on that, we accumulated methods and scripts, designed with the production version.
 
-This scripts are shared here. Over the years, the emphasis has been made on three main types of enrichments:
+These scripts are shared here. Over the years, the emphasis has been made on three main types of enrichments:
 * **New variables**: to make statistics easier, including some cleaning steps. The variables are added directly inside tables; 
 * **Enrichments**: adding missing values or variables with a wider coverage, from external sources or from an internal propagations (e.g. addresses...);
 * **New analytical dimensions**: completely new tables to make analysis richer (e.g. technologies...).
-
-The two conceptual models are linked through a central table (patent applications table), and with keys at individual level for documents or at aggregated level for classifications.
