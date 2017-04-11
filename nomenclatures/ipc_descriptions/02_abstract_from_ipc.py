@@ -71,7 +71,7 @@ cnx = mysql.connector.connect(user='your_user', password='your_password',
 cursor = cnx.cursor()
 add_ipc_hrchy = ("INSERT IGNORE INTO ipc_hierarchy (code, ancestor, parent)"
                  " VALUES (%s,%s,%s)")
-add_ipc = ("INSERT IGNORE INTO nomen_ipc (code, description)"
+add_ipc = ("INSERT IGNORE INTO ipc (code, description)"
            "VALUES (%s,%s)")
 
 with open(ifname, "rb") as ifile:
