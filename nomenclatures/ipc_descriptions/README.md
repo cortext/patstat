@@ -17,7 +17,7 @@ To run the _VM_ we need a virtualization software, for us the software that fits
 
 [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
-_Pages 34-43_
+_Pages 34-43._
 [Install VirtualBox Guie](http://download.virtualbox.org/virtualbox/5.1.18/UserManual.pdf)
 
 The next step is run our OVA file, for this you have to import the virtual machine into VirtualBox software, here is a graphical tutorial how you can do this:
@@ -26,17 +26,17 @@ The next step is run our OVA file, for this you have to import the virtual machi
 
 After our VM has been created and is running we proceed to login in with the next credentials:
 
-'''
+```
 User: user
 Password: user 
-'''
+```
 
 Finally to launch the t3sa in our VM you have to type and execute the next command in the _terminal_:
 
-'''
+```
 cd t3as-pat-clas/pat-clas-service
 mvn clean install tomcat7:run
-'''
+```
 
 To be able to access the API from your host PC, you have to follow one of the ports of the _host machine_ (The machine that host the VM) to the _port 8080_ of the VM. This can be done in the menu of Virtualbox “Machine>Settings>Network>Avanced>Port forwarding”. And there you can create a new rule putting as _“Host Port”_ the port that you want on your PC and _“Guest Port”_ 8080, and save the changes.
 
