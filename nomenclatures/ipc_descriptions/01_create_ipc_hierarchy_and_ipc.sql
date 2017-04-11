@@ -44,3 +44,4 @@ CREATE TABLE ipc (
 	created_at TIMESTAMP DEFAULT current_timestamp,
 	CONSTRAINT ipc_PK PRIMARY KEY (code)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
