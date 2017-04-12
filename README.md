@@ -25,3 +25,7 @@ These scripts are shared here. Over the years, the emphasis has been made on thr
 * **New variables**: to make statistics easier, including some cleaning steps. The variables are added directly inside tables; 
 * **Enrichments**: adding missing values or variables with a wider coverage, from external sources or from an internal propagations (e.g. addresses...);
 * **New analytical dimensions**: completely new tables to make analysis richer (e.g. technologies...).
+
+##  Adding classifications (nomenclature)
+* [Patent Office names nomenclature](nomenclatures/offices_classification/README.md)
+* [building descriptions for the International Patent Classification](nomenclatures/ipc_descriptions/README.md)
