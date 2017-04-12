@@ -2,6 +2,7 @@
 -- Lionel Villard
 -- 2017/04/12
 -- Build a list of all IPC code that are inside patstat
+-- more than 75 000 ipc codes in more than 12 min
 -- ---------------------------------------------------------------------------------
 
 USE `your_database`;
@@ -16,7 +17,7 @@ DROP TABLE IF EXISTS `a03_01_all_ipc_codes`;
 
 CREATE TABLE a03_01_all_ipc_codes 
 	AS 
-	SELECT ipc_class_symbol, ipc_version, COUNT(appln_id) AS NbApplbn 
+	SELECT ipc_class_symbol, MAX(ipc_version) AS last_ipc_version, COUNT(appln_id) AS NbApplbn 
 	FROM tls209_appln_ipc
-GROUP BY ipc_class_symbol, ipc_version
+GROUP BY ipc_class_symbol
 ORDER BY ipc_class_symbol ASC;
