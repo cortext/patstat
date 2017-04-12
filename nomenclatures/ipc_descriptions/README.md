@@ -8,7 +8,7 @@ A complete classification symbol comprises the combined symbols representing the
 ![ipc_classification](https://cloud.githubusercontent.com/assets/800631/24955826/56805dc0-1f85-11e7-86fa-574f48c6611e.jpg)
 [Guide to the IPC (2016) page 6](http://www.wipo.int/export/sites/www/classifications/ipc/en/guide/guide_ipc.pdf)
 
-After the Subclass 3rd level, the purely hierachical relations change: they are horizontal links between Groups, depending of the dots, from the main groups (e.g. 33/00) and the subgroups (e.g. 33/08), or directly between subgroups.
+After the Subclass 3rd level, the purely hierachical relations change: they are horizontal links between Groups, depending of the dots, from the main groups (e.g. 33/00) and the subgroups (e.g. 33/08), or directly between subgroups. IPC classes from main group to subgroup are separated with a maximun of 6 levels (and three more levels for section, class and subclass).
 
 ![ipc_classification_02](https://cloud.githubusercontent.com/assets/800631/24956247/20036e5c-1f87-11e7-999d-9e080f615835.jpg)
 [Guide to the IPC (2016) page 7](http://www.wipo.int/export/sites/www/classifications/ipc/en/guide/guide_ipc.pdf)
@@ -21,8 +21,8 @@ The aim of this work his to rebuild each sentence for a given IPC code from its 
 If you are using a MySQL server, you can reproduce the scripts that are in 01_create_ipc_code_list.sql, in order to produce the list of ipc code you want to look for.
 
 In the csv file 03_01_abstract_from_ipc_input.csv you will be able to find all the codes that are inside our patstat production version, with the attributs: 
-** last_ipc_version: when a ipc code is used in different ipc versoin, last_ipc_version store the more recent version
-** NbAppln: raw count of all applicantions for a given ipc code
+* **last_ipc_version**: when a ipc code is used in different ipc version, last_ipc_version store the more recent version;
+* **NbAppln**: raw count of all applicantions for a given ipc code. For all patents, more than 71 000 distinct ipc code were found.
 
 ## Installation and configuration of the virtual machine
 
