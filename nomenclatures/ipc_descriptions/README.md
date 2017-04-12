@@ -18,9 +18,9 @@ In this example, 33/49 has a link to its parents 33/487 and 33/483, but 33/50 is
 The aim of this work his to rebuild each sentence for a given IPC code from its parent classes, in a more human readable way.
 
 ## Selection of the IPC codes
-If you are using a MySQL server, you can reproduce the scripts that are in 01_create_ipc_code_list.sql, in order to produce the list of ipc code you want to look for.
+If you are using a MySQL server, you can reproduce the scripts that are in [01_create_ipc_code_list.sql](01_create_ipc_code_list.sql), in order to produce the list of ipc code you want to look for.
 
-In the csv file 03_01_abstract_from_ipc_input.csv you will be able to find all the codes that are inside our patstat production version, with the attributs: 
+In the csv file [03_01_abstract_from_ipc_input.csv](03_01_abstract_from_ipc_input.csv) you will be able to find all the codes that are inside our patstat production version, with the attributs: 
 * **last_ipc_version**: when a ipc code is used in different ipc version, last_ipc_version store the more recent version;
 * **NbAppln**: raw count of all applicantions for a given ipc code. For all patents, more than 71 000 distinct ipc code were found.
 

@@ -2,7 +2,7 @@
 -- Lionel Villard
 -- 2017/04/12
 -- Build a list of all IPC code that are inside patstat
--- more than 71 000 ipc codes in more than 8 min
+-- more than 71 000 ipc codes (20 min)
 -- ---------------------------------------------------------------------------------
 
 USE `your_database`;
