@@ -1,7 +1,7 @@
 # Enriching Patstat: Descriptions for the International Patent Classification 
 
 ## Goals
-Patents have fine grained information to describe the technologies that are combined by the applications. The IPC divides technology into eight sections with approximately 70 000 subdivisions. Each subdivision has a symbol consisting of Arabic numerals and letters of the Latin alphabet [Preface WIPO IPC](http://www.wipo.int/classifications/ipc/en/preface.html).
+Patents have fine grained information to describe the technologies that are combined by the applications. The IPC divides technology into eight sections with approximately 70 000 subdivisions. Each subdivision has a symbol consisting of Arabic numerals and letters of the Latin alphabet ([preface WIPO IPC](http://www.wipo.int/classifications/ipc/en/preface.html)).
 
 A complete classification symbol comprises the combined symbols representing the section, class, subclass and main group or subgroup. After the Subclass 3rd level, the hieratical relations change: they are horizontal links between Groups, depending of the dots, from the main groups (e.g.  33/00) and the subgroups (33/08), or directly between subgroups.
 
