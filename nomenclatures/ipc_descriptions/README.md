@@ -20,7 +20,7 @@ To run the _VM_ we need a virtualization software, for us the software that fits
 
 _Pages 34-43_
 
-[Install VirtualBox Guie](http://download.virtualbox.org/virtualbox/5.1.18/UserManual.pdf)
+[VirtualBox UserManual](http://download.virtualbox.org/virtualbox/5.1.18/UserManual.pdf)
 
 The next step is run our OVA file, for this you have to import the virtual machine into VirtualBox software, here is a graphical tutorial how you can do this:
 
