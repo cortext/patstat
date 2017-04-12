@@ -6,6 +6,9 @@ http://www.wipo.int/classifications/ipc/en/preface.html
 A complete classification symbol comprises the combined symbols representing the 
 section, class, subclass and main group or subgroup.
 
+![ipc_classification](https://cloud.githubusercontent.com/assets/800631/24955826/56805dc0-1f85-11e7-86fa-574f48c6611e.jpg)
+Guide to the IPC (2016) page 6 
+
 ## Installation and configuration of the virtual machine
 
 The main idea of the _VM (virtual machine)_ is communicated directly from our LocalHost to the _t3as API_ project, in that way the load process could be much less than using directly the _t3as webpage_. For this we use an _OVA file (Open Virtualization Format)_, it is an open standard for packaging and distributing virtual appliance, that a file was created by Francois Perruchas, the file can be downloaded here: (The OVA was split in two and the size is 2,2gb)
