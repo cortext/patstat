@@ -13,7 +13,7 @@ After the Subclass 3rd level, the purely hieratical relations change: they are h
 ![ipc_classification_02](https://cloud.githubusercontent.com/assets/800631/24956247/20036e5c-1f87-11e7-999d-9e080f615835.jpg)
 [Guide to the IPC (2016) page 7](http://www.wipo.int/export/sites/www/classifications/ipc/en/guide/guide_ipc.pdf)
 
-The aim of this work his to rebuild each sentence for a given IPC code in a more human readable way.
+The aim of this work his to rebuild each sentence for a given IPC code from its parents classes, in a more human readable way.
 
 ## Installation and configuration of the virtual machine
 
