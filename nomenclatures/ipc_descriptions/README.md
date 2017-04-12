@@ -1,4 +1,4 @@
-# Enriching Patstat: Descriptions for the International Patent Classification 
+# Enriching Patstat: building descriptions for the International Patent Classification 
 
 ## Goals
 Patents have fine grained information to describe the technologies that are combined by the applications. The International Patent Classification (IPC) divides technology into eight sections with approximately 70 000 subdivisions. Each subdivision has a symbol consisting of Arabic numerals and letters of the Latin alphabet ([preface WIPO IPC](http://www.wipo.int/classifications/ipc/en/preface.html)).

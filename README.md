@@ -18,6 +18,7 @@ But PATSTAT-IFRIS is as well an augmented version of the generic PATSTAT databas
 With ten years of work on patent statistics, we have been used several versions of the patstat:
 * Patstat 2008, 2009 and 2011;
 * Patstat 2014, April (production database).
+
 For each iteration, as a starting point, the Patstat database is set up. Based on that, we accumulated methods and scripts, designed with the production version.
 
 These scripts are shared here. Over the years, the emphasis has been made on three main types of enrichments:
