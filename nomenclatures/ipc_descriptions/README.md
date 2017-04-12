@@ -8,12 +8,12 @@ A complete classification symbol comprises the combined symbols representing the
 ![ipc_classification](https://cloud.githubusercontent.com/assets/800631/24955826/56805dc0-1f85-11e7-86fa-574f48c6611e.jpg)
 [Guide to the IPC (2016) page 6](http://www.wipo.int/export/sites/www/classifications/ipc/en/guide/guide_ipc.pdf)
 
-After the Subclass 3rd level, the purely hieratical relations change: they are horizontal links between Groups, depending of the dots, from the main groups (i.e.  33/00) and the subgroups (i.e. 33/08), or directly between subgroups.
+After the Subclass 3rd level, the purely hierachical relations change: they are horizontal links between Groups, depending of the dots, from the main groups (e.g. 33/00) and the subgroups (e.g. 33/08), or directly between subgroups.
 
 ![ipc_classification_02](https://cloud.githubusercontent.com/assets/800631/24956247/20036e5c-1f87-11e7-999d-9e080f615835.jpg)
 [Guide to the IPC (2016) page 7](http://www.wipo.int/export/sites/www/classifications/ipc/en/guide/guide_ipc.pdf)
 
-In this example, 33/49 is link to its parents 33/487 and 33/483, but 33/50 is a new subgroup class (e.g. not related to 33/483).
+In this example, 33/49 has a link to its parents 33/487 and 33/483, but 33/50 is a new subgroup class (i.e. not related to 33/483).
 
 The aim of this work his to rebuild each sentence for a given IPC code from its parent classes, in a more human readable way.
 
