@@ -38,7 +38,7 @@ In the csv file [03_01_abstract_from_ipc_input.csv](03_01_abstract_from_ipc_inpu
 * **last_ipc_version**: when a ipc code is used in different ipc version, last_ipc_version store the more recent version;
 * **NbAppln**: raw volumes of all applications (with redundancies) for a given ipc code. For all patents, more than 71 000 distinct ipc codes were found.
 
-### Setting up the virtual machine
+## Setting up the virtual machine
 
 [NICTA](http://www.data61.csiro.au/) developped in 2013 a set of API to query the patent classifications (IPC, CPC, USPC). This API is available [here](http://pat-clas.t3as.org/) and the code on [github](https://github.com/NICTA/t3as-pat-clas). Unfortunately, this implementation has unmet java dependencies and is based on IPC / CPC / USPC 2013 data, which is partly not available anymore on internet and not up to date.
 
