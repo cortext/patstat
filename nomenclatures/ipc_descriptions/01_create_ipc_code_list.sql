@@ -29,7 +29,7 @@ ORDER BY ipc_class_symbol ASC;
 SELECT 
     last_ipc_version,
     COUNT(ipc_class_symbol) AS NbDistinctIPCcodes,
-    SUM(NbApplbn) AS NbAppln
+    SUM(NbAppln) AS NbAppln
 FROM
     a03_01_all_ipc_codes
 GROUP BY last_ipc_version;
