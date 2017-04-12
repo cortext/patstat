@@ -38,23 +38,21 @@ In the csv file [03_01_abstract_from_ipc_input.csv](03_01_abstract_from_ipc_inpu
 * **last_ipc_version**: when a ipc code is used in different ipc version, last_ipc_version store the more recent version;
 * **NbAppln**: raw volumes of all applications (with redundancies) for a given ipc code. For all patents, more than 71 000 distinct ipc codes were found.
 
-## Installation and configuration of the virtual machine
-
-## Introduction
+### Setting up the virtual machine
 
 [NICTA](http://www.data61.csiro.au/) developped in 2013 a set of API to query the patent classifications (IPC, CPC, USPC). This API is available [here](http://pat-clas.t3as.org/) and the code on [github](https://github.com/NICTA/t3as-pat-clas). Unfortunately, this implementation has unmet java dependencies and is based on IPC / CPC / USPC 2013 data, which is partly not available anymore on internet and not up to date.
 
 [Cambialens](https://github.com/cambialens) forked the project and updated it to make it work with 2016 data. It is the repository we will use here to build our own server to set the API (it's much faster than using a remote API).
 
-## Virtualization software
+### Virtualization software
 
 You can use any virtualization software. Its installation on the host machine is beyond the scope of this tutorial. In our case, we used [VirtualBox](https://www.virtualbox.org/).
 
-## Guest server
+### Guest server
 
 We used [Ubuntu Server 16.04](https://www.ubuntu.com). You can mostly use any linux distribution, please adjust the package manager command if your OS is not using apt.
 
-### Installation
+#### Installation
 
 *Please refer to the manual of your virtualization software if you are not using VirtualBox.*
 
@@ -66,7 +64,7 @@ We used [Ubuntu Server 16.04](https://www.ubuntu.com). You can mostly use any li
 6. Restart at the end. You should be able to login with the credentials you defined during the installation.
 7. (Optional) if you prefer to connect to your new virtual server with SSH, for example to be able to copy / paste, install ssh with `sudo apt install ssh` and forward one of your host ports to the port 22 of the guest server. In VirtualBox, you can forward ports in the network section of the VM settings.
 
-### Installation of the API
+#### Installation of the API
 
 1. Update & Upgrade Ubuntu `sudo apt update && sudo apt dist-upgrade`
 2. Install Git, Maven, OpenJDK `sudo apt install openjdk-8-jdk maven git`
@@ -81,13 +79,9 @@ We used [Ubuntu Server 16.04](https://www.ubuntu.com). You can mostly use any li
     6. If you have no errors during the compilation, you can run the API with `cd t3as-pat-clas/pat-clas-service/ && mvn tomcat7:run`
 
 
-### Accessing the API
+## Accessing the API
 
 You need to be able to reach the port 8080 to query the API. In VirtualBox, the easiest way is to go to VM network settings and forward one of the host port to the 8080 guest port.
-
-
-### Accessing the API
-
 
 The main idea of the _VM (virtual machine)_ is communicated directly from our LocalHost to the _t3as API_ project, in that way the load process could be much less than using directly the _t3as webpage_. For this we use an _OVA file (Open Virtualization Format)_, it is an open standard for packaging and distributing virtual appliance, that a file was created by Francois Perruchas, the file can be downloaded here: (The OVA was split in two and the size is 2,2gb)
 
