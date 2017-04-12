@@ -17,6 +17,13 @@ In this example, 33/49 has a link to its parents 33/487 and 33/483, but 33/50 is
 
 The aim of this work his to rebuild each sentence for a given IPC code from its parent classes, in a more human readable way.
 
+## Selection of the IPC codes
+If you are using a MySQL server, you can reproduce the scripts that are in 01_create_ipc_code_list.sql, in order to produce the list of ipc code you want to look for.
+
+In the csv file 03_01_abstract_from_ipc_input.csv you will be able to find all the codes that are inside our patstat production version, with the attributs: 
+** last_ipc_version: when a ipc code is used in different ipc versoin, last_ipc_version store the more recent version
+** NbAppln: raw count of all applicantions for a given ipc code
+
 ## Installation and configuration of the virtual machine
 
 The main idea of the _VM (virtual machine)_ is communicated directly from our LocalHost to the _t3as API_ project, in that way the load process could be much less than using directly the _t3as webpage_. For this we use an _OVA file (Open Virtualization Format)_, it is an open standard for packaging and distributing virtual appliance, that a file was created by Francois Perruchas, the file can be downloaded here: (The OVA was split in two and the size is 2,2gb)
