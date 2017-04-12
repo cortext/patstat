@@ -20,10 +20,6 @@ The aim of this work his to rebuild each sentence for a given IPC code from its 
 ## Selection of the IPC codes
 If you are using a MySQL server, you can reproduce the scripts that are in [01_create_ipc_code_list.sql](01_create_ipc_code_list.sql), in order to produce the list of ipc code you want to look for.
 
-In the csv file [03_01_abstract_from_ipc_input.csv](03_01_abstract_from_ipc_input.csv) you will be able to find all the codes that are inside our patstat production version, with the attributs: 
-* **last_ipc_version**: when a ipc code is used in different ipc version, last_ipc_version store the more recent version;
-* **NbAppln**: raw volumes of all applications (with redundancies) for a given ipc code. For all patents, more than 71 000 distinct ipc code were found.
-
 | last_ipc_version | NbDistinctIPCcodes | NbAppln (with redundancies) | 
 | --- | --- | --- |
 | 2006-01-01 | 65379 | 154923559 |
@@ -37,6 +33,10 @@ In the csv file [03_01_abstract_from_ipc_input.csv](03_01_abstract_from_ipc_inpu
 | 2012-01-01 | 610 | 1820008 |
 | 2013-01-01 | 680 | 1285133 |
 | 2014-01-01 | 336 | 619669 |
+
+In the csv file [03_01_abstract_from_ipc_input.csv](03_01_abstract_from_ipc_input.csv) you will be able to find all the codes that are inside our patstat production version, with the attributs: 
+* **last_ipc_version**: when a ipc code is used in different ipc version, last_ipc_version store the more recent version;
+* **NbAppln**: raw volumes of all applications (with redundancies) for a given ipc code. For all patents, more than 71 000 distinct ipc codes were found.
 
 ## Installation and configuration of the virtual machine
 
