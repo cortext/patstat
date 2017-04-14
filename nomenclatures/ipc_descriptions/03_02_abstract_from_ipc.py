@@ -67,7 +67,6 @@ def CheckIPCContext(s):
                         position['subclass'] = cleanTitles(elt['textBody'])
                         position['full_subclass'] = re.sub(
                             '\n', ' ', elt['textBody'])
-                        pp.pprint('prueba')
                     if elt['level'] == level_elt - 1:
                        ipc_hrchy['ancestor'] = elt['symbol']
                 else:
