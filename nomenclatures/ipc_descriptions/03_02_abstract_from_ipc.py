@@ -5,6 +5,7 @@ import json
 import sys
 import csv
 import re
+import pickle
 
 
 # Convert from CPC IPC ref format A63H17/273
@@ -29,14 +30,14 @@ def cpcRefToIpc(s):
 
 
 def CheckIPCContext(s):
-    code = cpcRefToIpc(s)
+    code = cpcRefToIpc(s.replace(" ", ""))
     serviceurl_ipc = 'http://localhost:8080/pat-clas-service/rest/v1.0/IPC/ancestorsAndSelf?symbol='
 
     url_ipc = serviceurl_ipc + code
     # we check IPC
     uh = urllib.urlopen(url_ipc)
     data = uh.read()
-    js = json.loads(str(data))
+    js = json.loads(data.decode("ascii", "ignore"))
     position = {}
     ipc_desc = {}
     ipc_hrchy = {}
@@ -53,7 +54,7 @@ def CheckIPCContext(s):
         for elt in js:
             if elt['symbol'] == code and elt['kind'] != 'n':
                 level_elt = elt['level']
-                ipc['description'] = elt['textBody'].split('\n', 1)[0] + '.'
+                ipc['description'] = elt['textBody'] + '.'
 
         for elt in js:
             if elt['level'] <= level_elt and elt['kind'] != 'n':
@@ -68,7 +69,7 @@ def CheckIPCContext(s):
                             'ipc_position'] = elt['symbol']
                         position['subclass'] = cleanTitles(elt['textBody'])
                         position['full_subclass'] = re.sub(
-                            '\n', ' ', elt['textBody'])
+                            '\n', ' ', elt['textBody']).encode("ascii", "ignore")
                 else:
 
                     if elt['textBody'][0].isupper():
@@ -104,7 +105,7 @@ def cleanTitles(s):
     r = r.title()
     return r
 
-ifname = 'abstract_from_ipc.input.csv'
+ifname = '03_01_abstract_from_ipc_input.csv'
 dict_data = {'pos': [], 'desc': [], 'hrchy': [], 'ipc': []}
 
 with open(ifname, "rb") as ifile:
