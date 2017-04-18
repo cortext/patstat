@@ -119,10 +119,10 @@ To be able to access the API from your host PC, you have to follow one of the po
 
 ## Python script to interact with the VM
 
-Inside the project you can find a script wrote in python in which is possible to communicate with the local API that we previously build. When you execute it "03_02_abstract_from_ipc.py", what it does is read from the cvs file "03_01_abstract_from_ipc_input.csv" all the IPC codes and confront each one returning the necessary data to create the follow data structures: '01_position' '02_description', '03_ipc.cvs', '04_hierarchy.cvs'. 
+Inside the project you can find a script wrote in python in which is possible to communicate with the local API that we previously build. When you execute it "03_02_abstract_from_ipc.py", what it does is read from the cvs file "03_01_abstract_from_ipc_input.csv" all the IPC codes and confront each one returning the necessary data to create the follow data structures: '01_position.cvs' '02_description.cvs', '03_ipc.cvs', '04_hierarchy.cvs'. 
 
-To run the script is requiered have installe python2
+To run the script is requiered have installed python2
 
-## Rebuilding the IPC hierarchy 
 ## Collecting the descriptions
+## Rebuilding the IPC hierarchy 
 ## Example of results
