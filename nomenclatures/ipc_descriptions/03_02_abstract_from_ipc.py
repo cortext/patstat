@@ -4,7 +4,6 @@ import urllib
 import json
 import sys
 import csv
-import pprint
 import re
 
 
@@ -41,9 +40,12 @@ def CheckIPCContext(s):
     position = {}
     ipc_desc = {}
     ipc_hrchy = {}
+    ipc = {}
     retval = {}
     full_descr = ' '
-    ipc_desc['ipc_code'] = ipc_hrchy['ipc_code']  = s
+    ipc_desc['ipc_code'] = ipc['ipc_code'] = ipc_hrchy['ipc_code'] = s
+    position['ipc_version'] = ipc_desc['ipc_version'] = ipc[
+        'ipc_version'] = ipc_hrchy['ipc_version'] = '2016.01'
 
     if js:
         # getting the level of the code
@@ -51,7 +53,7 @@ def CheckIPCContext(s):
         for elt in js:
             if elt['symbol'] == code and elt['kind'] != 'n':
                 level_elt = elt['level']
-                #ipc_hrchy['descr'] = elt['textBody'].split('\n', 1)[0]
+                ipc['description'] = elt['textBody'].split('\n', 1)[0] + '.'
 
         for elt in js:
             if elt['level'] <= level_elt and elt['kind'] != 'n':
@@ -67,18 +69,21 @@ def CheckIPCContext(s):
                         position['subclass'] = cleanTitles(elt['textBody'])
                         position['full_subclass'] = re.sub(
                             '\n', ' ', elt['textBody'])
-                    if elt['level'] == level_elt - 1:
-                       ipc_hrchy['ancestor'] = elt['symbol']
                 else:
-                    full_descr += elt['textBody']  # FULL TEXT
-                    if elt['kind'] == 'm':
-                        full_descr += '. '
+
+                    if elt['textBody'][0].isupper():
+                        full_descr += '. ' + elt['textBody']
+                    else:
+                        full_descr += ' ' + elt['textBody']
+                    if elt['level'] == level_elt - 1:
+                        ipc_hrchy['ancestor'] = elt['symbol']
 
     full_descr = re.sub('\n', ' ', full_descr)
     ipc_desc['ipc_desc'] = full_descr[3:] + '.'
     retval[0] = position
     retval[1] = ipc_desc
-    retval[2] = ipc_hrchy
+    retval[2] = ipc
+    retval[3] = ipc_hrchy
     return retval
 
 
@@ -96,11 +101,11 @@ def dicToCsv(output_file, cvs_columns, dict_data):
 def cleanTitles(s):
     r = re.sub('\n', ' ', s)
     r = re.sub('[^A-Z ]', '', r)
+    r = r.title()
     return r
 
-pp = pprint.PrettyPrinter(indent=4)
 ifname = 'abstract_from_ipc.input.csv'
-dict_data = {'pos': [], 'desc': [], 'hrchy': []}
+dict_data = {'pos': [], 'desc': [], 'hrchy': [], 'ipc': []}
 
 with open(ifname, "rb") as ifile:
     # Reader pipe
@@ -110,9 +115,10 @@ with open(ifname, "rb") as ifile:
         res = CheckIPCContext(row[0])
         dict_data['pos'].append(res[0])
         dict_data['desc'].append(res[1])
-        dict_data['hrchy'].append(res[2])
+        dict_data['ipc'].append(res[2])
+        dict_data['hrchy'].append(res[3])
 
-    # Create the positions table
+    # Create the ipc positions table
     csv_columns = ['ipc_position', 'section', 'class',
                    'subclass', 'full_subclass', 'ipc_version']
     ofname = '01_abstract_from_ipc.output.csv'
@@ -123,14 +129,12 @@ with open(ifname, "rb") as ifile:
     ofname = '02_ipc_description.output.csv'
     dicToCsv(ofname, csv_columns, dict_data['desc'])
 
-    # Create the hierarchy table
-    csv_columns = ['ipc_code', 'ancestor', 'parent', 'ipc_version']
-    ofname = '03_hierarchy_ipc.output.csv'
-    dicToCsv(ofname, csv_columns, dict_data['hrchy'])
-
-    '''
     # Create the simple ipc table
-    csv_columns = ['code', 'description', 'ipc_version']
-    ofname = 'abstract_from_ipc.output.csv'
-    dicToCsv(ofname, csv_columns, dict_data)
-    '''
+    csv_columns = ['ipc_code', 'description', 'ipc_version']
+    ofname = '03_ipc_list.output.csv'
+    dicToCsv(ofname, csv_columns, dict_data['ipc'])
+
+    # Create the hierarchy ipc table
+    csv_columns = ['ipc_code', 'ancestor', 'parent', 'ipc_version']
+    ofname = '04_hierarchy_ipc.output.csv'
+    dicToCsv(ofname, csv_columns, dict_data['hrchy'])
