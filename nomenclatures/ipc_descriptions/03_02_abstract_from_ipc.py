@@ -69,7 +69,7 @@ def CheckIPCContext(s):
                             'ipc_position'] = elt['symbol']
                         position['subclass'] = cleanTitles(elt['textBody'])
                         position['full_subclass'] = re.sub(
-                            '\n', ' ', elt['textBody']).encode("ascii", "ignore")
+                            '\n', ' ', elt['textBody'])
                 else:
 
                     if elt['textBody'][0].isupper():
