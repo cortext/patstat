@@ -118,6 +118,11 @@ mvn clean install tomcat7:run
 To be able to access the API from your host PC, you have to follow one of the ports of the _host machine_ (The machine that host the VM) to the _port 8080_ of the VM. This can be done in the menu of Virtualbox “Machine>Settings>Network>Avanced>Port forwarding”. And there you can create a new rule putting as _“Host Port”_ the port that you want on your PC and _“Guest Port”_ 8080, and save the changes.
 
 ## Python script to interact with the VM
-## Rebuilding the IPC hierarchy 
+
+Inside the project you can find a script wrote in python in which is possible to communicate with the local API that we previously build. When you execute it "03_02_abstract_from_ipc.py", what it does is read from the cvs file "03_01_abstract_from_ipc_input.csv" all the IPC codes and confront each one returning the necessary data to create the follow data structures: '01_position.cvs' '02_description.cvs', '03_ipc.cvs', '04_hierarchy.cvs'. 
+
+To run the script is requiered have installed python2
+
 ## Collecting the descriptions
+## Rebuilding the IPC hierarchy 
 ## Example of results
