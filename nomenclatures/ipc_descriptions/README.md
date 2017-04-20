@@ -130,7 +130,7 @@ One of the first goals of the script is collecting all the relate information ab
  * ipc_position: the first three levels symbol. 
  * section: The title of the level, that means only the first part of the description (Uppercases).
  * class: The same as section.
- * subclass: The seme as section.
+ * subclass: The same as section.
  * full_subclass: The complete description of the subclass level (Uppercase and lower cases).
  
 The next structure we called it "ipc_description" in which we concatenate and store the descriptions of the remaining levels. The structure contains: 
