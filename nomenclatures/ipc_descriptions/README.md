@@ -125,7 +125,7 @@ To run the script is required you have installed python2
 
 ## Collecting the descriptions
 
-One of the first goals of the script is collecting all the relate information about the international patent classification (IPC). For this we modeled two different structures, the first one called "ipc_position" store the principal information on the first three levels that IPC symbol belongs (Section, Class, Subclass). The ipc_position structure is composed of the following fields:    
+One of the first goals of the script is collecting all the relate information about the international patent classification (IPC). For this we modeled two different structures, the first one called "ipc_position" store the principal information on the first three levels that IPC symbol belongs (Section, Class, Subclass). The ipc_position structure is composed of the following fields. 
 
  * ipc_position: the first three levels symbol. 
  * section: The title of the level, that means only the first part of the description (Uppercases).
@@ -133,14 +133,29 @@ One of the first goals of the script is collecting all the relate information ab
  * subclass: The same as section.
  * full_subclass: The complete description of the subclass level (Uppercase and lower cases).
  
-The next structure we called it "ipc_description" in which we concatenate and store the descriptions of the remaining levels. The structure contains: 
+The next structure we called it "ipc_description" in which we concatenate and store the descriptions of the remaining levels. The structure contains.
  
-  * ipc_code: ipc_symbol
+  * ipc_code: IPC symbol
   * ipc_position: The position that the IPC symbol belongs to. 
-  * ipc_desc: All the concatenate descriptions of the levels below to 1,2 and 3 levels.
+  * ipc_desc: All the concatenate descriptions of the levels below to 1, 2 and 3 levels.
   * leve: The level that the IPC symbol belongs to.
   * version: The IPC classification version used to query the data.
  
 
-## Rebuilding the IPC hierarchy 
+## Rebuilding the IPC hierarchy
+
+The other objective of this script is to organize all the hierarchy from the IPC in a relational structure. Thus we designed other two structures that are exported by the script like "03_ipc_list. out. csv" and "03_ipc_hierarchy. out. csv". Therefor we have one with all the list of the IPC symbols and their respective descriptions as shown in the next structure.
+
+    * ipc_code: IPC symbol.
+    * description: The direct, simple description of the international patent classification
+    * ipc_version: The IPC classification version used to query the data.
+ 
+ And other one with each IPC symbol that are organized by an ancestor and by parent.
+ 
+    * ipc_code: IPC symbol
+    * ancestor: The preceding level of the ipc_code
+    * parent: The symbol of the section level
+    * ipc_version: The IPC classification version used to query the data.
+ 
+
 ## Example of results
