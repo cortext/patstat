@@ -124,5 +124,23 @@ Inside the project you can find a script wrote in python in which is possible to
 To run the script is required you have installed python2
 
 ## Collecting the descriptions
+
+One of the first goals of the script is collecting all the relate information about the international patent classification (IPC). For this we modeled two different structures, the first one called "ipc_position" store the principal information on the first three levels that IPC symbol belongs (Section, Class, Subclass). The ipc_position structure is composed of the following fields:    
+
+ * ipc_position: the first three levels symbol. 
+ * section: The title of the level, that means only the first part of the description (Uppercases).
+ * class: The same as section.
+ * subclass: The seme as section.
+ * full_subclass: The complete description of the subclass level (Uppercase and lower cases).
+ 
+The next structure we called it "ipc_description" in which we concatenate and store the descriptions of the remaining levels. The structure contains: 
+ 
+  * ipc_code: ipc_symbol
+  * ipc_position: The position that the IPC symbol belongs to. 
+  * ipc_desc: All the concatenate descriptions of the levels below to 1,2 and 3 levels.
+  * leve: The level that the IPC symbol belongs to.
+  * version: The IPC classification version used to query the data.
+ 
+
 ## Rebuilding the IPC hierarchy 
 ## Example of results
