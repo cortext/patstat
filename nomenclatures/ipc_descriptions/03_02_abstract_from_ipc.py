@@ -5,7 +5,6 @@ import json
 import sys
 import csv
 import re
-import pickle
 
 
 # Convert from CPC IPC ref format A63H17/273
@@ -50,14 +49,14 @@ def CheckIPCContext(s):
 
     if js:
         # getting the level of the code
-        level_elt = -1
+        ipc_desc['level'] = -1
         for elt in js:
-            if elt['symbol'] == code and elt['kind'] != 'n':
-                level_elt = elt['level']
+            if elt['symbol'] == code:
+                ipc_desc['level'] = elt['level']
                 ipc['description'] = elt['textBody'] + '.'
 
         for elt in js:
-            if elt['level'] <= level_elt and elt['kind'] != 'n':
+            if elt['level'] <= ipc_desc['level']:
                 if elt['level'] in (0, 1, 2):
                     if elt['level'] == 0:
                         ipc_hrchy['parent'] = elt['symbol']
@@ -76,11 +75,13 @@ def CheckIPCContext(s):
                         full_descr += '. ' + elt['textBody']
                     else:
                         full_descr += ' ' + elt['textBody']
-                    if elt['level'] == level_elt - 1:
+                    if elt['level'] == ipc_desc['level'] - 1:
                         ipc_hrchy['ancestor'] = elt['symbol']
 
-    full_descr = re.sub('\n', ' ', full_descr)
-    ipc_desc['ipc_desc'] = full_descr[3:] + '.'
+    if full_descr != ' ':
+        full_descr = re.sub('\n', ' ', full_descr)
+        ipc_desc['ipc_desc'] = full_descr[3:] + '.'
+
     retval[0] = position
     retval[1] = ipc_desc
     retval[2] = ipc
@@ -91,7 +92,8 @@ def CheckIPCContext(s):
 def dicToCsv(output_file, cvs_columns, dict_data):
     try:
         with open(ofname, 'w') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+            writer = csv.DictWriter(csvfile, fieldnames=csv_columns,
+                                    delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             writer.writeheader()
             for data in dict_data:
                 writer.writerow(data)
@@ -122,11 +124,12 @@ with open(ifname, "rb") as ifile:
     # Create the ipc positions table
     csv_columns = ['ipc_position', 'section', 'class',
                    'subclass', 'full_subclass', 'ipc_version']
-    ofname = '01_abstract_from_ipc.output.csv'
+    ofname = '01_ipc_position.output.csv'
     dicToCsv(ofname, csv_columns, dict_data['pos'])
 
     # Create the full ipc description table
-    csv_columns = ['ipc_code', 'ipc_position', 'ipc_desc', 'ipc_version']
+    csv_columns = ['ipc_code', 'ipc_position',
+                   'ipc_desc', 'level', 'ipc_version']
     ofname = '02_ipc_description.output.csv'
     dicToCsv(ofname, csv_columns, dict_data['desc'])
 
@@ -137,5 +140,5 @@ with open(ifname, "rb") as ifile:
 
     # Create the hierarchy ipc table
     csv_columns = ['ipc_code', 'ancestor', 'parent', 'ipc_version']
-    ofname = '04_hierarchy_ipc.output.csv'
+    ofname = '04_ipc_hierarchy.output.csv'
     dicToCsv(ofname, csv_columns, dict_data['hrchy'])
