@@ -143,7 +143,7 @@ The next structure we called it "ipc_description" in which we concatenate and st
  
 ## Rebuilding the IPC hierarchy
 
-The other objective of this script is to organize all the hierarchy from the IPC in a relational structure. Thus we designed other two structures that are exported by the script like "03_ipc_list.out.csv" and "03_ipc_hierarchy.out.csv". Therefor we have one with all the list of the IPC symbols and their respective descriptions as shown in the next structure.
+The other objective of this script is to organize all the hierarchy from the IPC in a relational structure. Thus we designed other two structures that are exported by the script like "03_ipc_list.output.csv" and "03_ipc_hierarchy.output.csv". Therefor we have one with all the list of the IPC symbols and their respective descriptions as shown in the next structure.
   
   * ipc_code: IPC symbol.
   * description: The direct, simple description of the international patent classification
