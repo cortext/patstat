@@ -124,7 +124,7 @@ To run the script is required you have installed python2
 
 ## Collecting the descriptions
 
-One of the first goals of the script is collecting all the relate information about the international patent classification (IPC). For this we modeled two different structures, the first one called "ipc_position" store the principal information on the first three levels that IPC symbol belongs (Section, Class, Subclass). The ipc_position structure is composed of the following fields. 
+One of the first script's goal is collecting all the relate information about the international patent classification (IPC). For this we modeled two different structures, the first one called "ipc_position" store the principal information on the first three levels that IPC symbol belongs (Section, Class, Subclass). The ipc_position structure is composed of the following fields. 
 
  * ipc_position: the first three levels symbol. 
  * section: The title of the level, that means only the first part of the description (Uppercases).
