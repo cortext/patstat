@@ -83,11 +83,10 @@ We used [Ubuntu Server 16.04](https://www.ubuntu.com). You can mostly use any li
 
 You need to be able to reach the port 8080 to query the API. In VirtualBox, the easiest way is to go to VM network settings and forward one of the host port to the 8080 guest port.
 
-The main idea of the _VM (virtual machine)_ is communicated directly from our LocalHost to the _t3as API_ project, in that way the load process could be much less than using directly the _t3as webpage_. For this we use an _OVA file (Open Virtualization Format)_, it is an open standard for packaging and distributing virtual appliance, that a file was created by Francois Perruchas, the file can be downloaded here: (The OVA was split in two and the size is 2,2gb)
+The main idea of the _VM (virtual machine)_ is communicated directly from our LocalHost to the _t3as API_ project, in that way the load process could be much less than using directly the _t3as webpage_. For this we use an _OVA file (Open Virtualization Format)_, it is an open standard for packaging and distributing virtual appliance, that a file was created by Francois Perruchas, the file can be downloaded here: (The OVA size is 2,2gb)
 
-[Download PatentApi.ova part 1](https://intercambio.upv.es/download.php?id=bbe8bb5741fd9052c9698aa2535187eb)
+[Download PatentApi.ova](https://cloud.esiee.fr/index.php/s/ZhRXSFum4DrFSu1/download)
 
-[Download PatentApi.ova part 2](https://intercambio.upv.es/download.php?id=47eb114c8ec5480b4db6ddfd81acf131)
 
 To run the _VM_ we need a virtualization software, for us the software that fits our goals is _Virtualbox_ mainly because is a simple and an open source solution. To install and configure it you can refer to the follow urls: 
 
@@ -125,7 +124,7 @@ To run the script is required you have installed python2
 
 ## Collecting the descriptions
 
-One of the first goals of the script is collecting all the relate information about the international patent classification (IPC). For this we modeled two different structures, the first one called "ipc_position" store the principal information on the first three levels that IPC symbol belongs (Section, Class, Subclass). The ipc_position structure is composed of the following fields. 
+One of the first script's goal is collecting all the relate information about the international patent classification (IPC). For this we modeled two different structures, the first one called "ipc_position" store the principal information on the first three levels that IPC symbol belongs (Section, Class, Subclass). The ipc_position structure is composed of the following fields. 
 
  * ipc_position: the first three levels symbol. 
  * section: The title of the level, that means only the first part of the description (Uppercases).
