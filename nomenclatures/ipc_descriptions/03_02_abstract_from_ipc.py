@@ -70,18 +70,15 @@ def CheckIPCContext(s):
                         position['full_subclass'] = re.sub(
                             '\n', ' ', elt['textBody'])
                 else:
-
-                    if elt['textBody'][0].isupper():
-                        full_descr += '. ' + elt['textBody']
-                    else:
-                        full_descr += ' ' + elt['textBody']
+                    full_descr += ' ' + elt['textBody']
                     if elt['level'] == ipc_desc['level'] - 1:
                         ipc_hrchy['ancestor'] = elt['symbol']
 
     if full_descr != ' ':
         full_descr = re.sub('\n', ' ', full_descr)
-        ipc_desc['ipc_desc'] = full_descr[3:] + '.'
-
+        full_descr = addDot(full_descr)
+        ipc_desc['ipc_desc'] = full_descr[4:] + '.'
+        ipc_desc['ipc_desc'] = cleanText(ipc_desc['ipc_desc'])
     retval[0] = position
     retval[1] = ipc_desc
     retval[2] = ipc
@@ -106,6 +103,26 @@ def cleanTitles(s):
     r = re.sub('[^A-Z ]', '', r)
     r = r.title()
     return r
+
+
+def cleanText(s):    
+    cleaned = s.replace(", ,", "")
+    cleaned = cleaned.replace(",,", ",")
+    cleaned = cleaned.replace(" ,", ",")
+    cleaned = cleaned.replace(". .", "")
+    cleaned = cleaned.replace("..", ".")
+    cleaned = cleaned.replace(" . ", ". ")
+    cleaned = re.sub("\s\s+", " ", cleaned)
+    cleaned = cleaned.replace(",.", ".")
+    cleaned = cleaned.replace(".,", ".")
+    cleaned = cleaned.replace(" .", ".")
+    cleaned = cleaned.replace(" ,", ",")
+    return cleaned
+
+
+def addDot(s):
+    result = re.sub(ur"(?!^)(?=\s[A-Z])", ". ", s)
+    return result
 
 ifname = '03_01_abstract_from_ipc_input.csv'
 dict_data = {'pos': [], 'desc': [], 'hrchy': [], 'ipc': []}
