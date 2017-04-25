@@ -160,6 +160,7 @@ And other one with each IPC symbol that are organized by an ancestor and by pare
 As stated above, when the script finishes, as a result, we have four different data structures, as an example we took two formed structure (ipc_position and ipc_description) from the IPC symbols:
 
 A01B3/66
+
 A01G31/02
 
 The first formed structure from A01B3/66 symbol was created thinking in a way to organize all the first three levels from a different main group occurs. With A01B3/66 the position code is A01B and for A01G31/02 is A01G, these represent the positions for many different IPC symbols. Then, with that in mind, we have the next table: 
