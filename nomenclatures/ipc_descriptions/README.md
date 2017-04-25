@@ -174,8 +174,8 @@ The first formed structure from A01B3/66 symbol was created thinking in a way to
 We build the second structure with the remaining data (main group and sub groups) and we concatenated and store it inside the column ipc_desc how is represented in the resulting table: 
 
 | ipc_code | ipc_position | ipc_desc | level | ipc_version | 
-| --- | --- | --- | --- | --- | --- |
-| ..... | ..... | ..... | ..... | ..... | ..... | 
+| --- | --- | --- | --- | --- |
+| ..... | ..... | ..... | ..... | ..... | 
 | A01B   3/66 | A01B | Ploughs with fixed plough-shares. Cable ploughs. Indicating or signalling devices for cable plough systems with... | 5 | 2016.01 | 
 | A01G  31/02 | A01G | Hydroponics. Cultivation without soil takes precedence. Special apparatus therefor apparatus for cultivation in.. | 4 | 2016.01  | 
 | ..... | ..... | ..... | ..... | ..... | 
