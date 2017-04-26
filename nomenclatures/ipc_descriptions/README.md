@@ -156,3 +156,29 @@ And other one with each IPC symbol that are organized by an ancestor and by pare
   * ipc_version: The IPC classification version used to query the data.
  
 ## Example of results
+
+As stated above, when the script finishes, as a result, we have four different data structures, as an example we took two formed structure (ipc_position and ipc_description) from the IPC symbols:
+
+A01B3/66
+
+A01G31/02
+
+The first formed structure from A01B3/66 symbol was created thinking in a way to organize all the first three levels from a different main group occurs. With A01B3/66 the position code is A01B and for A01G31/02 is A01G, these represent the positions for many different IPC symbols. Then, with that in mind, we have the next table: 
+
+| ipc_positon | section | class | subclass | full_subclass | ipc_version | 
+| --- | --- | --- | --- | --- | --- |
+| ..... | ..... | ..... | ..... | ..... | ..... | 
+| A01B | Human Necessities | Agriculture Forestry Animal Husbandry Hunting.... | Soil Working In Agriculture Or Forestry Parts... | SOIL WORKING IN AGRICULTURE OR FORESTRY PARTS, DETAILS, OR ACCESSORIES OF AGRICULTURAL MACHINES OR IMPLEMENTS, IN GENERAL making or covering furrows or holes for sowing, planting...  | 2016.01 | 
+| A01G | Human Necessities | Agriculture Forestry Animal Husbandry Hunting... | Horticulture Cultivation Of Vegetables Flowers Rice... | HORTICULTURE CULTIVATION OF VEGETABLES, FLOWERS, RICE, FRUIT, VINES, HOPS, OR SEAWEED FORESTRY WATERING picking of fruits, vegetables, hops, or the like plant reproduction by.... | 2016.01  | 
+| ..... | ..... | ..... | ..... | ..... | ..... | 
+
+We build the second structure with the remaining data (main group and sub groups) and we concatenated and store it inside the column ipc_desc how is represented in the resulting table: 
+
+| ipc_code | ipc_position | ipc_desc | level | ipc_version | 
+| --- | --- | --- | --- | --- |
+| ..... | ..... | ..... | ..... | ..... | 
+| A01B   3/66 | A01B | Ploughs with fixed plough-shares. Cable ploughs. Indicating or signalling devices for cable plough systems with... | 5 | 2016.01 | 
+| A01G  31/02 | A01G | Hydroponics. Cultivation without soil takes precedence. Special apparatus therefor apparatus for cultivation in.. | 4 | 2016.01  | 
+| ..... | ..... | ..... | ..... | ..... | 
+
+It should be noted that the text were cleaned with the idea of being able to be used with "Natural language processing".
