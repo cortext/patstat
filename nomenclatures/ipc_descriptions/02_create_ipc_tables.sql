@@ -8,7 +8,7 @@
 -- ---------------------------------------------------------------------------------
 -- Database
 
-USE `your_database`;
+USE `t_juan`;
 
 -- ---------------------------------------------------------------------------------
 -- DROP TABLE position
@@ -32,7 +32,7 @@ CREATE TABLE `ipc_position` (
 -- Building position from a csv file
 
 LOAD DATA LOCAL INFILE '...\/01_ipc_position.output.csv' 
-INTO TABLE ipc_description FIELDS TERMINATED BY "\t" LINES TERMINATED BY "\n"
+INTO TABLE ipc_position FIELDS TERMINATED BY "\t" LINES TERMINATED BY "\n"
 (@ipc_code, @section, @class, @subclass, @full_subclass, @ipc_version)
 SET
 ipc_code = nullif(@ipc_code,''),
@@ -93,7 +93,7 @@ CREATE TABLE `ipc_synom` (
 -- Building ipc_synom from a csv file
 
 LOAD DATA LOCAL INFILE '...\/03_ipc_list.output.csv' 
-INTO TABLE ipc_description FIELDS TERMINATED BY "\t" LINES TERMINATED BY "\n"
+INTO TABLE ipc_synom FIELDS TERMINATED BY "\t" LINES TERMINATED BY "\n"
 (@ipc_code, @description, @ipc_version)
 SET
 ipc_code = nullif(@ipc_code,''),
@@ -104,7 +104,7 @@ ipc_version = nullif(@ipc_version,'');
 -- ---------------------------------------------------------------------------------
 -- DROP TABLE ipc hierarchy
 
-DROP TABLE IF EXISTS `ipc_description`;
+DROP TABLE IF EXISTS `ipc_hierarchy`;
 
 -- ---------------------------------------------------------------------------------
 -- CREATE TABLE ipc_hierarchy
@@ -114,13 +114,14 @@ CREATE TABLE `ipc_hierarchy` (
   `ancestor` varchar(15) NOT NULL,
   `parent` varchar(15) NOT NULL,
   `ipc_version` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ipc_code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ---------------------------------------------------------------------------------
 -- Building ipc hierarchy from a csv file
 
 LOAD DATA LOCAL INFILE '...\/04_ipc_hierarchy.output.csv' 
-INTO TABLE ipc_description FIELDS TERMINATED BY "\t" LINES TERMINATED BY "\n"
+INTO TABLE ipc_hierarchy FIELDS TERMINATED BY "\t" LINES TERMINATED BY "\n"
 (@ipc_code, @ancestor, @parent, @ipc_version)
 SET
 ipc_code = nullif(@ipc_code,''),
