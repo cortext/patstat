@@ -67,8 +67,9 @@ def CheckIPCContext(s):
                         position['ipc_position'] = ipc_desc[
                             'ipc_position'] = elt['symbol']
                         position['subclass'] = cleanTitles(elt['textBody'])
-                        position['full_subclass'] = re.sub(
+                        full_subclass= re.sub(
                             '\n', ' ', elt['textBody'])
+                        position['full_subclass']  =  full_subclass.replace('"', '')
                 else:
                     full_descr += ' ' + elt['textBody']
                     if elt['level'] == ipc_desc['level'] - 1:
@@ -79,6 +80,7 @@ def CheckIPCContext(s):
         full_descr = addDot(full_descr)
         ipc_desc['ipc_desc'] = full_descr[4:] + '.'
         ipc_desc['ipc_desc'] = cleanText(ipc_desc['ipc_desc'])
+
     retval[0] = position
     retval[1] = ipc_desc
     retval[2] = ipc
@@ -100,12 +102,13 @@ def dicToCsv(output_file, cvs_columns, dict_data):
 
 def cleanTitles(s):
     r = re.sub('\n', ' ', s)
-    r = re.sub('[^A-Z ]', '', r)
-    r = r.title()
-    return r
+    r = re.sub("\s\s+", " ", r)
+    output = ' '.join(w for w in r.split(" ") if w.isupper())
+    output = output.title()
+    return output
 
 
-def cleanText(s):    
+def cleanText(s):
     cleaned = s.replace(", ,", "")
     cleaned = cleaned.replace(",,", ",")
     cleaned = cleaned.replace(" ,", ",")
@@ -117,6 +120,9 @@ def cleanText(s):
     cleaned = cleaned.replace(".,", ".")
     cleaned = cleaned.replace(" .", ".")
     cleaned = cleaned.replace(" ,", ",")
+    cleaned = cleaned.replace(":.", ":")
+    cleaned = cleaned.replace("-.", "-")
+    result = re.sub(ur"(?!^)(?=\.\s[A-Z]{1})", "\1", s)
     return cleaned
 
 
