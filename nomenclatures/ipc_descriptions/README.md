@@ -163,7 +163,7 @@ A01B3/66
 
 A01G31/02
 
-The first formed structure from A01B3/66 symbol was created thinking in a way to organize all the first three levels from a different main group occurs. With A01B3/66 the position code is A01B and for A01G31/02 is A01G, these represent the positions for many different IPC symbols. Then, with that in mind, we have the next table: 
+The first formed structure was created thinking in a way to organize all the first three levels from a different main group occurs. Thus the position code for the A01B3/66 ipc symbol is A01B and for A01G31/02 is A01G, these represent the positions for many different IPC symbols. Then, with that in mind, we have the next table: 
 
 | ipc_positon | section | class | subclass | full_subclass | ipc_version | 
 | --- | --- | --- | --- | --- | --- |
@@ -181,4 +181,4 @@ We build the second structure with the remaining data (main group and sub groups
 | A01G  31/02 | A01G | Hydroponics. Cultivation without soil takes precedence. Special apparatus therefor apparatus for cultivation in.. | 4 | 2016.01  | 
 | ..... | ..... | ..... | ..... | ..... | 
 
-It should be noted that the text were cleaned with the idea of being able to be used with "Natural language processing".
+It should be noted that the text were cleaned with the idea of being able to be used with "Natural language processing". In some cases such as chemistry formulas or vitamins names the "cleaning text method" puts a dot before these.
