@@ -43,7 +43,7 @@ def CheckIPCContext(s):
     ipc = {}
     retval = {}
     full_descr = ' '
-    ipc_desc['ipc_code'] = ipc['ipc_code'] = ipc_hrchy['ipc_code'] = s
+    ipc_desc['ipc_class_level'] = ipc['ipc_class_level'] = ipc_hrchy['ipc_class_level'] = s
     position['ipc_version'] = ipc_desc['ipc_version'] = ipc[
         'ipc_version'] = ipc_hrchy['ipc_version'] = '2016.01'
 
@@ -151,17 +151,17 @@ with open(ifname, "rb") as ifile:
     dicToCsv(ofname, csv_columns, dict_data['pos'])
 
     # Create the full ipc description table
-    csv_columns = ['ipc_code', 'ipc_position',
+    csv_columns = ['ipc_class_level', 'ipc_position',
                    'ipc_desc', 'level', 'ipc_version']
     ofname = '02_ipc_description.output.csv'
     dicToCsv(ofname, csv_columns, dict_data['desc'])
 
     # Create the simple ipc table
-    csv_columns = ['ipc_code', 'description', 'ipc_version']
+    csv_columns = [' ipc_class_level', 'description', 'ipc_version']
     ofname = '03_ipc_list.output.csv'
     dicToCsv(ofname, csv_columns, dict_data['ipc'])
 
     # Create the hierarchy ipc table
-    csv_columns = ['ipc_code', 'ancestor', 'parent', 'ipc_version']
+    csv_columns = [' ipc_class_level', 'ancestor', 'parent', 'ipc_version']
     ofname = '04_ipc_hierarchy.output.csv'
     dicToCsv(ofname, csv_columns, dict_data['hrchy'])

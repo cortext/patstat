@@ -18,7 +18,7 @@ In this example, 33/49 has a link to its parents 33/487 and 33/483, but 33/50 is
 The aim of this work his to rebuild each sentence for a given IPC code from its parent classes, in a more human readable way.
 
 ## Selection of the IPC codes
-If you are using a MySQL server, you can reproduce the scripts that are in [01_create_ipc_code_list.sql](01_create_ipc_code_list.sql), in order to produce the list of ipc code you want to look for.
+If you are using a MySQL server, you can reproduce the scripts that are in [01_create_ ipc_class_level_list.sql](01_create_ ipc_class_level_list.sql), in order to produce the list of ipc code you want to look for.
 
 | last_ipc_version | NbDistinctIPCcodes | NbAppln (with redundancies) | 
 | --- | --- | --- |
@@ -134,7 +134,7 @@ One of the first script's goal is collecting all the relate information about th
  
 The next structure we called it "ipc_description" in which we concatenate and store the descriptions of the remaining levels. The structure contains.
  
-  * ipc_code: IPC symbol
+  *  ipc_class_level: IPC symbol
   * ipc_position: The position that the IPC symbol belongs to. 
   * ipc_desc: All the concatenate descriptions of the levels below to 1, 2 and 3 levels.
   * leve: The level that the IPC symbol belongs to.
@@ -144,14 +144,14 @@ The next structure we called it "ipc_description" in which we concatenate and st
 
 The other objective of this script is to organize all the hierarchy from the IPC in a relational structure. Thus we designed other two structures that are exported by the script like "03_ipc_list.output.csv" and "03_ipc_hierarchy.output.csv". Therefor we have one with all the list of the IPC symbols and their respective descriptions as shown in the next structure.
   
-  * ipc_code: IPC symbol.
+  *  ipc_class_level: IPC symbol.
   * description: The direct, simple description of the international patent classification
   * ipc_version: The IPC classification version used to query the data.
 
 And other one with each IPC symbol that are organized by an ancestor and by parent.
  
-  * ipc_code: IPC symbol
-  * ancestor: The preceding level of the ipc_code
+  *  ipc_class_level: IPC symbol
+  * ancestor: The preceding level of the  ipc_class_level
   * parent: The symbol of the section level
   * ipc_version: The IPC classification version used to query the data.
  
@@ -174,7 +174,7 @@ The first formed structure was created thinking in a way to organize all the fir
 
 We build the second structure with the remaining data (main group and sub groups) and we concatenated and store it inside the column ipc_desc how is represented in the resulting table: 
 
-| ipc_code | ipc_position | ipc_desc | level | ipc_version | 
+|  ipc_class_level | ipc_position | ipc_desc | level | ipc_version | 
 | --- | --- | --- | --- | --- |
 | ..... | ..... | ..... | ..... | ..... | 
 | A01B   3/66 | A01B | Ploughs with fixed plough-shares. Cable ploughs. Indicating or signalling devices for cable plough systems with... | 5 | 2016.01 | 
