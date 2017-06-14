@@ -2,7 +2,7 @@
 
 ## Goals
 
-One of the main goal in our research group is the study and analysis of the invetions and innovation behavior made by legal entities, such as corporations, universities, research centers and in general every class of entity that do not fit into the “natural person” classification. 
+One of the main goal in our research group is the study and analysis of the invetions and innovation behavior made by legal entities, such as corporations, universities, research centers and in general every class of entity that do not fit into the “natural person” classification.
 
 Considering this and always based on the data contributed by PATSTAT we started with a data restructuring to proceed with a classification, in this way we defined two entity class, legal and person. In the present repository we detail all the needed process to achieve this objective.
 
