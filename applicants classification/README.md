@@ -31,7 +31,7 @@ Is important to note that the total amount of applications are 82’448.209, but
 Total records: **5'645.621**
 
 <p align="center">
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png)
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png">
 </p>
 
 #### Step 2
@@ -41,7 +41,7 @@ We query all the applicants that do not have any ownership patent and insert it 
 Total records: **4'315.591**
 
 <p align="center">
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img2.png)
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img2.png">
 </p>
 
 #### Step 3
@@ -51,7 +51,7 @@ From set "unkown" we take out all the applicants that have inside the table invt
 Total records: **2'635.131**
 
 <p align="center">
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img3.png)
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img3.png">
 </p>
 
 #### Step 4
@@ -61,5 +61,5 @@ From set "unkown" we query all the applicants that have only one application and
 Total records: **790.607**
 
 <p align="center">
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img4.png)
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img4.png">
 </p>
