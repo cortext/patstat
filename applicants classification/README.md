@@ -63,3 +63,13 @@ Total records: **790.607**
 <p align="center">
 <img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img4.png">
 </p>
+
+#### Step 5
+
+The applicants in set prob_legal that exist inside the invt_addr_ifris table and have less than 20 patent applications. We insert it into prob_person set.
+
+Total records: **2.084.967**
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img5.png">
+</p>
