@@ -28,7 +28,7 @@ We are going to query all the applicants that in some of their applications have
 
 Is important to note that the total amount of applications are 82’448.209, but if we group by doc_std_name_id we have 9'961.212 total applicants.
 
-Total records: **5’645.621**
+Total records: **5'645.621**
 
 ![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png)
 
@@ -36,7 +36,14 @@ Total records: **5’645.621**
 
 We query all the applicants that do not have any ownership patent and insert it into “unkown” set.
 
-Total records: **4.315.591**
+Total records: **4'315.591**
 
 ![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img2.png)
 
+#### Step 3
+
+From set “unkown” we take out all the applicants that have inside the table invt_addr_ifris their source is different to “Missing” and insert it into the “probable person” set.
+
+Total records: **2'635.131**
+
+![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img3.png)
