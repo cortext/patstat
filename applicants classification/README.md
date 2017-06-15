@@ -52,6 +52,6 @@ Total records: **2'635.131**
 
 From set "unkown" we query all the applicants that have only one application and insert it into the "probable person" set.
 
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img4.png)
-
 Total records: **790.607**
+
+![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img4.png)
