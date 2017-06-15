@@ -21,3 +21,13 @@ With the previous experience we decided that before to run a regular expression 
 To explain how we start to fill each set and how we will classify all entities, we divide the solution by steps, where each step contain their respective description with the total updated records.
 
 It is important to know that all the methods were mainly based on the doc_std_name field, that field was created by PATSTAT and contain normalized name from the applicants, is not perfect, but we think is the best option since most of the public resources usually make reference to it.
+
+#### Step 1 
+
+We are going to query all the applicants that in some of their applications have the ownership of the patent and insert it into the “probl_legal” set. 
+
+Is important to note that the total amount of applications are 82’448.209, but if we group by doc_std_name_id we have 9'961.212 total applicants.
+
+Total records: **5’645.621**
+
+
