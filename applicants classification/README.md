@@ -30,20 +30,36 @@ Is important to note that the total amount of applications are 82’448.209, but
 
 Total records: **5'645.621**
 
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png)
+<p align="center">
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png">
+</p>
 
 #### Step 2
 
-We query all the applicants that do not have any ownership patent and insert it into “unkown” set.
+We query all the applicants that do not have any ownership patent and insert it into "unkown" set.
 
 Total records: **4'315.591**
 
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img2.png)
+<p align="center">
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img2.png">
+</p>
 
 #### Step 3
 
-From set “unkown” we take out all the applicants that have inside the table invt_addr_ifris their source is different to “Missing” and insert it into the “probable person” set.
+From set "unkown" we take out all the applicants that have inside the table invt_addr_ifris their source is different to “Missing” and insert it into the "probable person" set.
 
 Total records: **2'635.131**
 
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img3.png)
+<p align="center">
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img3.png">
+</p>
+
+#### Step 4
+
+From set "unkown" we query all the applicants that have only one application and insert it into the "probable person" set.
+
+Total records: **790.607**
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img4.png">
+</p>
