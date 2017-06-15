@@ -21,3 +21,12 @@ SELECT  appln.doc_std_name_id,patstatAvr2014.tls208_doc_std_nms.doc_std_name,app
 -- CLEAN REPEATED DATA
 DELETE FROM known WHERE known.doc_std_name_id in (SELECT  prob_lega.doc_std_name_id FROM prob_lega);
 
+-- STEP 3  Where source is different to “Missing”
+
+CREATE TABLE prob_person AS
+ SELECT  person_id, person_name, doc_std_id, doc_std_name_id, invt_seq_nr
+ FROM    t_juan.set1
+ WHERE   doc_std_id IN (SELECT invt_addr_ifris.doc_std_name_id FROM patstatAvr2014.invt_addr_ifris WHERE source <> "MISSING");
+ 
+-- CLEAN REPEATED DATA
+DELETE FROM known WHERE known.doc_std_name_id in (SELECT prob_person.doc_std_name_id FROM prob_person); 
