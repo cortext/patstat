@@ -38,5 +38,5 @@ We query all the applicants that do not have any ownership patent and insert it 
 
 Total records: **4.315.591**
 
-![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png)
+![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img2.png)
 
