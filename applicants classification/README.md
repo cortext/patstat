@@ -34,7 +34,7 @@ Total records: **5'645.621**
 
 #### Step 2
 
-We query all the applicants that do not have any ownership patent and insert it into “unkown” set.
+We query all the applicants that do not have any ownership patent and insert it into "unkown" set.
 
 Total records: **4'315.591**
 
@@ -42,8 +42,16 @@ Total records: **4'315.591**
 
 #### Step 3
 
-From set “unkown” we take out all the applicants that have inside the table invt_addr_ifris their source is different to “Missing” and insert it into the “probable person” set.
+From set "unkown" we take out all the applicants that have inside the table invt_addr_ifris their source is different to “Missing” and insert it into the "probable person" set.
 
 Total records: **2'635.131**
 
 ![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img3.png)
+
+#### Step 4
+
+From set "unkown" we query all the applicants that have only one application and insert it into the "probable person" set.
+
+![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img4.png)
+
+Total records: **790.607**
