@@ -44,3 +44,27 @@ FROM     unkown as a
 INNER JOIN patstatAvr2014.applt_addr_ifris AS b ON a.doc_std_name_id = b.doc_std_name_id  
 GROUP BY doc_std_name_id
 HAVING   COUNT(a.doc_std_name_id) < 2
+
+-- CLEAN REPEATED DATA
+DELETE FROM known WHERE known.doc_std_name_id in (SELECT prob_person.doc_std_name_id FROM prob_person); 
+
+-- STEP 5 From probable legal to probable person set
+
+INSERT INTO prob_person
+SELECT   
+		 a.person_id,
+		 a.person_name,	 
+		 a.doc_std_name_id,
+		 a.doc_std_name,
+		 a.invt_seq_nr
+FROM     prob_legal as a
+INNER JOIN patstatAvr2014.applt_addr_ifris AS b ON a.doc_std_name_id = b.doc_std_name_id  
+WHERE a.doc_std_name_id IN (SELECT doc_std_name_id FROM patstatAvr2014.invt_addr_ifris)
+GROUP BY doc_std_name_id
+HAVING   COUNT(a.doc_std_name_id) < 21
+ORDER BY COUNT(a.doc_std_name_id) DESC 
+
+
+-- CLEAN REPEATED DATA
+DELETE FROM prob_legal WHERE prob_legal.doc_std_name_id in (SELECT unkown.doc_std_name_id FROM unkown); 
+
