@@ -30,4 +30,4 @@ Is important to note that the total amount of applications are 82’448.209, but
 
 Total records: **5’645.621**
 
-
+![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png)
