@@ -31,3 +31,12 @@ Is important to note that the total amount of applications are 82’448.209, but
 Total records: **5’645.621**
 
 ![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png)
+
+#### Step 2
+
+We query all the applicants that do not have any ownership patent and insert it into “unkown” set.
+
+Total records: **4.315.591**
+
+![alt text](https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img1.png)
+
