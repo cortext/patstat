@@ -73,3 +73,13 @@ Total records: **2.084.967**
 <p align="center">
 <img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img5.png">
 </p>
+
+#### Step 6
+
+For this step we rely on the column person_name, although, this field is more messy than the doc_std_name it has some additional information related to the natural person structure that helped us to create a further filter. For this we are going to take off from prob_legal set the records that have a structure similar to __, __ and less than 200 patent applications. 
+
+Total records: **167.869**
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img6.png">
+</p>
