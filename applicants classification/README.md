@@ -10,7 +10,7 @@ Is important clarify that the number of stored applications on PATSTAT are more 
 
 ## Classification of Entities
 
-The initial assumption about how to get into the problem and solve it was through a small function with a big list of regular expressions that establish a base on identifiers like “inc” “corp” etc wich determine if an applicant is a legal entity or not. But it was not so simple, for the fact, that a huge amount of companies does not have this kind of identifiers, like IBM. 
+The initial assumption about how to get into the problem and solve it was through a small function with a big list of regular expressions that establish base on identifiers like “inc” “corp” etc wich determine if an applicant is a legal entity or not. But it was not so simple, for the fact, that a huge amount of companies does not have this kind of identifiers, like IBM. 
 
 Then we try to turn the approach of the solution, instead of matching legals entities we wanted to identify the persons with three different methods, the first one was based on the structure of their names, the second one was with regular expression that matched cases when the applicant have Phd. or Dr. words and the third one is a dictionary of common names. But we found that a lot of companies have the same structure as a person name and even worse some companies were created with a persons name. So the solution was longer than we thought.
 
