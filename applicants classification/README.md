@@ -84,7 +84,7 @@ Total records: **167.869**
 <img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img6.png">
 </p>
 
-#### Step 6
+#### Step 7
 
 Another point to consider is the percentage of the patents where the applicant has the ownership. For this we created a new table called “temporal” where we insert all the applicants that on their applications have less of 80 percents of the ownership, and after delete this applicants from set "prob_legal" and inster them in "prob_person". 
 
