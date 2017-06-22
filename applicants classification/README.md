@@ -46,7 +46,7 @@ Total records: **4'315.591**
 
 #### Step 3
 
-From set "unkown" we take out all the applicants that have inside the table invt_addr_ifris their source is different to “Missing” and insert it into the "probable person" set.
+From set "unkown" we take out all the applicants that have the source column from invt_addr_ifris different to “Missing” and we insert it into the "probable person" set.
 
 Total records: **2'635.131**
 
