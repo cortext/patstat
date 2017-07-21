@@ -111,7 +111,6 @@ Total detected ISO Country code: **53176**
 Total detected Capitals: **4573**
 
 Total detected by Country: **62.384** 
---------------------------------------------
 
 Total Records: **120.133**
 
