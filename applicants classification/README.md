@@ -104,7 +104,16 @@ Now we have 1’630.287 records from the table prob_legal, which we called ambig
 
 #### Countries, ISO country code and Capitals
 
-#### New firm detection Regex
+A lot of the firm's records from ambiguous cases are composed by country names, ISO country code or capital names, that's why we build and run a function with a list of all countries, ISO codes and capitals.
+
+Total detected ISO Country code: **53176**
+
+Total detected Capitals: **4573**
+
+Total detected by Country: **62.384** 
+--------------------------------------------
+
+Total Records: **120.133**
 
 #### New firm detection Regex
 
