@@ -84,6 +84,7 @@ Total records: **167.869**
 <img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img6.png">
 </p>
 
+
 ### Firms identifiers REGEX
 
 At this point we have a clear view of the entity's classification, therefore is easier for us to do a data analysis and execute the initial process we had in mind. Thus, we created a function to check over a regular expression list if a record is a firm or not from some common identifier,those were built based on magerman list and "the patent name-matching project" by Berkley, the function file can be found in the repository named firm_detection.sql 
