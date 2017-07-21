@@ -96,15 +96,4 @@ The previous function was executed on the sets prob_person and prob_legal in ord
 
 Then we detected 2'109.217 firms. Now The tables prob_person and prob_legal are cleaner. The next was built a sample with >3000 records from each datasets (prob_person and prob_legal), we analyze them and detected that inside prob_person there were still some companies with common identifiers such as "the", "of" etc. Therefore we build another list with firms identifiers that's covered this kind of cases, you can find the list here. We insert the result inside "Legal" table.
 
-4.863 Matched
-=======
-#### Step 7
-
-Another point to consider is the percentage of the patents where the applicant has the ownership. For this we created a new table called “temporal” where we insert all the applicants that on their applications have less of 80 percents of the ownership, and after delete this applicants from set "prob_legal" and inster them in "prob_person". 
-
-Total records: **84.588**
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img7.png">
-</p>
->>>>>>> 8321ac9d5a788d4afbfca79cac70d98bcc1fc411
+**4.863** Matched
