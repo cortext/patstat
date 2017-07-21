@@ -91,8 +91,11 @@ At this point we have a clear view of the entity's classification, therefore is 
 The previous function was executed on the sets prob_person and prob_legal in order to mark certainly the legal entities and the natural persons, at the end we have the following results:
 
 **53.813** Firms detected from prob_person
+
 **2’109.217** Firms detected from prob_legal
 
 Then we detected 2'109.217 firms. Now The tables prob_person and prob_legal are cleaner. The next was built a sample with >3000 records from each datasets (prob_person and prob_legal), we analyze them and detected that inside prob_person there were still some companies with common identifiers such as "the", "of" etc. Therefore we build another list with firms identifiers that's covered this kind of cases, you can find the list here. We insert the result inside "Legal" table.
 
 **4.863** Matched
+
+### Cleaning Ambiguous Cases
