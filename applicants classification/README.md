@@ -99,3 +99,15 @@ Then we detected 2'109.217 firms. Now The tables prob_person and prob_legal are 
 **4.863** Matched
 
 ### Cleaning Ambiguous Cases
+
+Now we have 1’630.287 records from the table prob_legal, which we called ambiguous cases, because by the analysis done previously over the sample, determined that approximately 70% of those are natural persons and many companies over there seems natural persons too, but actually are firms with people names. So we need to cleaning up even more the datasets, for this we perform the following steps.
+
+#### Countries, ISO country code and Capitals
+
+#### New firm detection Regex
+
+#### New firm detection Regex
+
+#### Common Surnames and Names
+
+### Final natural person detection 
