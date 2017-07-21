@@ -116,6 +116,10 @@ Total Records: **120.133**
 
 #### New firm detection Regex
 
+Another analysis was made over the ambiguous records and we realized that a lot of them have some incomplete identifier or a new identifier that give us the opportunity to create a completely new function, the final result was a list of 453 new cases, additionally in this step we executed a script to detect records that are composed only by one word like ‘IBM’. We executed it and the result is the next. (The function file is second_firm_detect.sql)
+
+Total records: **393.391**
+
 #### Common Surnames and Names
 
 #### Final natural person detection 
