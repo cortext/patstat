@@ -46,7 +46,7 @@ Total records: **4'315.591**
 
 #### Step 3
 
-From set "unkown" we take out all the applicants that have inside the table invt_addr_ifris their source is different to “Missing” and insert it into the "probable person" set.
+From set "unkown" we take out all the applicants that have the source column from invt_addr_ifris different to “Missing” and we insert it into the "probable person" set.
 
 Total records: **2'635.131**
 
@@ -84,6 +84,7 @@ Total records: **167.869**
 <img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img6.png">
 </p>
 
+<<<<<<< HEAD
 ### Firms identifiers REGEX
 
 At this point we have a clear view of the entity's classification, therefore is easier for us to do a data analysis and execute the initial process we had in mind. Thus, we created a function to check over a regular expression list if a record is a firm or not from some common identifier,those were built based on magerman list and "the patent name-matching project" by Berkley, the function file can be found in the repository named firm_detection.sql 
@@ -96,3 +97,14 @@ The previous function was executed on the sets prob_person and prob_legal in ord
 Then we detected 2'109.217 firms. Now The tables prob_person and prob_legal are cleaner. The next was built a sample with >3000 records from each datasets (prob_person and prob_legal), we analyze them and detected that inside prob_person there were still some companies with common identifiers such as "the", "of" etc. Therefore we build another list with firms identifiers that's covered this kind of cases, you can find the list here. We insert the result inside "Legal" table.
 
 4.863 Matched
+=======
+#### Step 7
+
+Another point to consider is the percentage of the patents where the applicant has the ownership. For this we created a new table called “temporal” where we insert all the applicants that on their applications have less of 80 percents of the ownership, and after delete this applicants from set "prob_legal" and inster them in "prob_person". 
+
+Total records: **84.588**
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img7.png">
+</p>
+>>>>>>> 8321ac9d5a788d4afbfca79cac70d98bcc1fc411
