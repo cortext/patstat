@@ -107,11 +107,11 @@ Now we have 1’630.287 records from the table prob_legal, which we called ambig
 
 A lot of the firm's records from ambiguous cases are composed by country names, ISO country code or capital names, that's why we build and run a function with a list of all countries, ISO codes and capitals.
 
-* Total detected ISO Country code: *53176
+* Total detected ISO Country code: **53176**
 
-* Total detected Capitals: *4573
+* Total detected Capitals: **4573**
 
-* Total detected by Country: *62.384 
+* Total detected by Country: **62.384**
 
 * Total Records: **120.133**
 
@@ -123,8 +123,7 @@ Another analysis was made over the ambiguous records and we realized that a lot 
 
 #### Common Surnames and Names
 
-
-Now we have a set with a total number of 1.128.134 ambiguous records, this is a higher figure than the 70 percent mentioned above. Our priority is to identify the largest amount of legal entities, for this reason, we continue with the cleaning and filter process, for that we detect natural persons from a list created by ourselves with the most commons surnames of the top 20 countries by number of patents, the list of countries is: 
+Now we have a set with a total number of 1.128.134 ambiguous records, this is a higher figure than the 70 percent mentioned above. Our priority is to identify the largest amount of legal entities, for this reason, we continue with the cleaning and filtering process, for this we detected natural persons from a list created by ourselves with the most common surnames and names from the top 20 countries by number of patents, the list of countries is:
 
 Japan,
 Usa,
@@ -147,5 +146,19 @@ Denmark,
 Austria,
 Belgum
 
+At the end we have two list, one with 3161 lastnames and the other one with 5494 names. Both were build rely on [url](https://www.behindthename.com/top/lists/belgium/2015) for surnames and [here](http://www.studentsoftheworld.info/penpals/stats.php3?Pays=JAP) for the most common names. 
+
+* Total detected by surnames list: **459.634 **
+
+* Total detected by names list: **264.794 **
+
+* Total Records: **724.428**
+
 
 #### Final natural person detection 
+
+
+#### Conclusions
+
+
+
