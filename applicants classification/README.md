@@ -95,7 +95,7 @@ The previous function was executed on the sets prob_person and prob_legal in ord
 
 * Total records: **2’109.217** (Firms detected from prob_legal)
 
-Then we detected 2'109.217 firms. Now The tables prob_person and prob_legal are cleaner. The next was built a sample with more than 3000 records from each datasets (prob_person and prob_legal), we analyze them and detected that inside prob_person there were still some companies with common identifiers such as "the", "of" etc. Therefore we build another list with firms identifiers that's covered this kind of cases, you can find the list here. We insert the result inside "Legal" table.
+Then we detected 2'109.217 firms. Now The tables prob_person and prob_legal are cleaner. The next was built a sample with more than 3000 records from each datasets (prob_person and prob_legal), we analyze them and detected that inside prob_person there were still some companies with common identifiers such as "the", "of" etc. Therefore we build another list with firms identifiers that's covered this kind of cases, you can find the list [here](http://www.riainabox.com/blog/the-top-50-most-commonly-used-words-in-ria-firm-names). We insert the result inside "Legal" table.
 
 * Total records: **4.863**
 
