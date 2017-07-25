@@ -84,6 +84,9 @@ Total records: **167.869**
 <img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img6.png">
 </p>
 
+### Step 7 
+
+Another point to consider is the percentage of the patents where the applicant has the ownership. For this we created a new table called “temporal” where we insert all the applicants that on their applications have less of 80 percents of the ownership, to later delete these applicants from set "prob_legal" and insert them into "prob_person".
 
 ### Firms identifiers REGEX
 
@@ -123,7 +126,7 @@ Another analysis was made over the ambiguous records and we realized that a lot 
 
 #### Common Surnames and Names
 
-Now we have a set with a total number of 1.128.134 ambiguous records, this is a higher figure than the 70 percent mentioned above. Our priority is to identify the largest amount of legal entities, for this reason, we continue with the cleaning and filtering process, for this we detected natural persons from a list created by ourselves with the most common surnames and names from the top 20 countries by number of patents, the list of countries is:
+Now we have a set with a total number of 1.128.134 ambiguous records, this is a higher figure than the 70 percent mentioned above. Our priority is to identify the largest amount of legal entities, for this reason, we continue with the cleaning and filtering process, for this we detected natural persons with a list created by ourselves that contains the most common surnames and names of the top 20 countries by number of patents, the list of countries is:
 
 Japan,
 Usa,
