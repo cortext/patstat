@@ -124,6 +124,14 @@ Another analysis was made over the ambiguous records and we realized that a lot 
 
 * Total records: **393.391**
 
+
+### Common applicants names
+
+From the applicants table we builded a list of the most common names that were find there. The records detected by the list 
+were inserted inside prob_person table and the list is named "individuals.sql".
+
+* Total records: **1.123**
+
 #### Common Surnames and Names
 
 Now we have a set with a total number of 1.128.134 ambiguous records, this is a higher figure than the 70 percent mentioned above. Our priority is to identify the largest amount of legal entities, for this reason, we continue with the cleaning and filtering process, for this we detected natural persons with a list created by ourselves that contains the most common surnames and names of the top 20 countries by number of patents, the list of countries is:
@@ -149,7 +157,7 @@ Denmark,
 Austria,
 Belgum
 
-At the end we have two list, one with 3161 lastnames and the other one with 5494 names. Both were build rely on [url](https://www.behindthename.com/top/lists/belgium/2015) for surnames and [here](http://www.studentsoftheworld.info/penpals/stats.php3?Pays=JAP) for the most common names. 
+At the end we have two list, one with 3161 lastnames and the other one with 5494 names. Both were builded based on [url](https://www.behindthename.com/top/lists/belgium/2015) for surnames and [here](http://www.studentsoftheworld.info/penpals/stats.php3?Pays=JAP) for the most common names. We the result records we created a set called "ambiguous_person" 
 
 * Total detected by surnames list: **459.634 **
 
@@ -157,9 +165,9 @@ At the end we have two list, one with 3161 lastnames and the other one with 5494
 
 * Total Records: **724.428**
 
+#### Name Pattern
 
-#### Final natural person detection 
-
+### Most important Firms
 
 #### Conclusions
 
