@@ -84,9 +84,13 @@ Total records: **167.869**
 <img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img6.png">
 </p>
 
-### Step 7 
+#### Step 7 
 
 Another point to consider is the percentage of the patents where the applicant has the ownership. For this we created a new table called “temporal” where we insert all the applicants that on their applications have less of 80 percents of the ownership, to later delete these applicants from set "prob_legal" and insert them into "prob_person".
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/cortext/patstat/master/applicants%20classification/img/img7.png">
+</p>
 
 ### Firms identifiers REGEX
 
@@ -159,17 +163,34 @@ Belgum
 
 At the end we have two list, one with 3161 lastnames and the other one with 5494 names. Both were builded based on [url](https://www.behindthename.com/top/lists/belgium/2015) for surnames and [here](http://www.studentsoftheworld.info/penpals/stats.php3?Pays=JAP) for the most common names. We the result records we created a set called "ambiguous_person" 
 
-* Total detected by surnames list: **459.634 **
+* Total detected by surnames list: **459.634**
 
-* Total detected by names list: **264.794 **
+* Total detected by names list: **264.794**
 
 * Total Records: **724.428**
 
-#### Name Pattern
+#### Name and Firms Pattern
 
-### Most important Firms
+We identified another pattern to filter natural persons, this is when a name have three words and a comma inside the person_name column, we insert the returned records into prob_person set. Also for firms, we determined when the doc_std_name is composed of one word or by more than 4 words, then we insert those into the "legal" set.
 
-#### Conclusions
+* Total Records: **6.420**
+
+### Final Firms Identifiers
+
+Once again we've filled the prob_person set, thus, we analyzed it and realized that left some identifiers to detect firms, for these identifiers we simply created a list with like clause.
+
+* Total Records: **1.938**
+
+#### Regex for person_name column
+
+Continuing with the prob_person set, we establish like firms the records that are detected by the regex functions, but instead run it over doc_std_name column we used person_name column.
+
+* Total Records: **3.546**
+
+#### Most important Firms
+
+
+## Conclusions
 
 
 
