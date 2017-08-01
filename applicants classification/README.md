@@ -126,25 +126,25 @@ Another analysis was made over the ambiguous records and we realized that a lot 
 
 Now we have a set with a total number of 1.128.134 ambiguous records, this is a higher figure than the 70 percent mentioned above. Our priority is to identify the largest amount of legal entities, for this reason, we continue with the cleaning and filter process, for that we detect natural persons from a list created by ourselves with the most commons surnames of the top 20 countries by number of patents, the list of countries is: 
 
-Japan,
-Usa,
-China,
-South korea,
-Germany,
-France,
-United Kingdom,
-Russia,
-Switzerland,
-Netherlands,
-Italy,
-Canada,
-Sweden,
-Australia,
-Finland,
-Israel,
-Spain,
-Denmark,
-Austria,
+Japan
+Usa
+China
+South korea
+Germany
+France
+United Kingdom
+Russia
+Switzerland
+Netherlands
+Italy
+Canada
+Sweden
+Australia
+Finland
+Israel
+Spain
+Denmark
+Austria
 Belgum
 
 
