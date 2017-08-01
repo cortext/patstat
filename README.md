@@ -30,4 +30,4 @@ These scripts are shared here. Over the years, the emphasis has been made on thr
 * [Patent Office names nomenclature](nomenclatures/offices_classification/)
 * [Building descriptions for the International Patent Classification](nomenclatures/ipc_descriptions/)
 ##  Cleaning, enriching the values
-* [Identification of the natural person (real person) in the applicants list)](applicants classification/)
+* [Identification of the natural person (real person) in the applicants list](applicants classification/)
