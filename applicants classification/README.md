@@ -175,7 +175,7 @@ We identified another pattern to filter natural persons, this is when a name hav
 
 * Total Records: **6.420**
 
-### Final Firms Identifiers
+#### Final Firms Identifiers
 
 Once again we've filled the prob_person set, thus, we analyzed it and realized that left some identifiers to detect firms, for these identifiers we simply created a list with like clause.
 
