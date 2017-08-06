@@ -129,7 +129,7 @@ Another analysis was made over the ambiguous records and we realized that a lot 
 * Total records: **393.391**
 
 
-### Common applicants names
+#### Common applicants names
 
 From the applicants table we builded a list of the most common names that were find there. The records detected by the list 
 were inserted inside prob_person table and the list is named "individuals.sql".
