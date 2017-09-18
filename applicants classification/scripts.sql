@@ -19,7 +19,7 @@ SELECT  appln.doc_std_name_id,patstatAvr2014.tls208_doc_std_nms.doc_std_name,app
  GROUP BY doc_std_name_id;
 
 -- CLEAN REPEATED DATA
-DELETE FROM known WHERE known.doc_std_name_id in (SELECT  prob_lega.doc_std_name_id FROM prob_lega);
+DELETE FROM known WHERE known.doc_std_name_id in (SELECT  prob_lega.doc_std_name_id FROM prob_legal);
 
 -- STEP 3  Where source is different to “Missing”
 
