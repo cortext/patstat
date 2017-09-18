@@ -809,7 +809,6 @@ ELSEIF myString regexp('( |^)BROS([^a-zA-Z0-9_]|$)') THEN SET  Tag = 'legal pers
 ELSEIF myString regexp('( |^)BUSINESS([^a-zA-Z0-9_]|$)') THEN SET  Tag = 'legal person';
 ELSEIF myString regexp('( |^)BV([^a-zA-Z0-9_]|$)') THEN SET  Tag = 'legal person';
 ELSEIF myString regexp('( |^)BV:([^a-zA-Z0-9_]|$)') THEN SET  Tag = 'legal person';
-ELSEIF myString regexp('( |^)BV?([^a-zA-Z0-9_]|$)') THEN SET  Tag = 'legal person';
 ELSEIF myString regexp('( |^)BVBA([^a-zA-Z0-9_]|$)') THEN SET  Tag = 'legal person';
 ELSEIF myString regexp('( |^)BVBASPRL([^a-zA-Z0-9_]|$)') THEN SET  Tag = 'legal person';
 ELSEIF myString regexp('( |^)BVIO([^a-zA-Z0-9_]|$)') THEN SET  Tag = 'legal person';

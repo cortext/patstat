@@ -129,7 +129,7 @@ Another analysis was made over the ambiguous records and we realized that a lot 
 * Total records: **393.391**
 
 
-### Common applicants names
+#### Common applicants names
 
 From the applicants table we builded a list of the most common names that were find there. The records detected by the list 
 were inserted inside prob_person table and the list is named "individuals.sql".
@@ -175,7 +175,7 @@ We identified another pattern to filter natural persons, this is when a name hav
 
 * Total Records: **6.420**
 
-### Final Firms Identifiers
+#### Final Firms Identifiers
 
 Once again we've filled the prob_person set, thus, we analyzed it and realized that left some identifiers to detect firms, for these identifiers we simply created a list with like clause.
 
