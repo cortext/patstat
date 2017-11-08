@@ -189,6 +189,8 @@ Continuing with the prob_person set, we establish like firms the records that ar
 
 #### Most important Firms
 
+## Quality checks
+add here all the quality checks (Phil + Pat)
 
 ## Conclusions
 
