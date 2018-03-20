@@ -161,7 +161,7 @@ Denmark
 Austria
 Belgum
 
-At the end we have two list, one with 3161 lastnames and the other one with 5494 names. Both were builded based on [url](https://www.behindthename.com/top/lists/belgium/2015) for surnames and [here](http://www.studentsoftheworld.info/penpals/stats.php3?Pays=JAP) for the most common names. We the result records we created a set called "ambiguous_person" 
+At the end we have two list, one with 3161 lastnames and the other one with 5494 names. Both were builded based on [url](https://www.behindthename.com/top/lists/belgium/2015) for surnames and [here](http://www.studentsoftheworld.info/penpals/stats.php3?Pays=JAP) for the most common names. With the resultant records we created a set called "ambiguous person" 
 
 * Total detected by surnames list: **459.634**
 
@@ -183,7 +183,7 @@ Once again we've filled the prob_person set, thus, we analyzed it and realized t
 
 #### Regex for person_name column
 
-Continuing with the prob_person set, we establish like firms the records that are detected by the regex functions, but instead run it over doc_std_name column we used person_name column.
+Continuing with the prob_person set, we establish as firms the records that were detected by the regex functions, but instead run it over doc_std_name column we used person_name column.
 
 * Total Records: **3.546**
 
