@@ -5,7 +5,7 @@ Patstat store the information of more than 50 millions of patent applicants, eit
 ## Setting up Libpostal 
 
 Libpostal is a C library for parsing/normalizing street addresses around the world using statistical NLP and open data. To install
-the lenguage binding for python can be read directly the documentation [here](https://github.com/openvenues/pypostal). For the present 
+the language binding for python you can directly access the documentation [here](https://github.com/openvenues/pypostal). For the present 
 script was used a local libpostal-rest instance that was mounted with a [docker container](https://github.com/johnlonganecker/libpostal-rest-docker), 
 this make easier and more generic the labor to interact with the library. 
 
