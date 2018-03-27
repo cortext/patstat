@@ -5,6 +5,7 @@ FNAME = 'export_newaddresses.csv'
 ONAME = 'export_newaddresses.parsed_names.csv'
 BASE_URL = 'http://local_ip:port/parser'
 
+
 def libpostal_api(address_text):
     resp = requests.post(BASE_URL,
                          data={'query': address_text})
@@ -19,7 +20,7 @@ def parse_patstat_address(ifile):
 
     for row in ifile:
         person_name = row['person_name']
-        list_res = libpstal_api(person_name)
+        list_res = libpostal_api(person_name)
         array_length = len(list_res)
         res = ''
 
@@ -37,6 +38,7 @@ def parse_patstat_address(ifile):
             print("\t", err)
 
     w.close
+
 
 r = open(FNAME)
 rcsv = DictReader(r, delimiter='\t')
