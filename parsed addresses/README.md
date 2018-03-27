@@ -2,7 +2,7 @@
 
 Patstat store the information of more than 50 millions of patent applicants, either natural persons or legal entities, 
 most of these information can be consulted in the table tls206_person. Nevertheless, almost in half of the record 
-the address information is missing, but doing an analysis of those cases wherein the address field was empty, it was determined 
+the address information is missing, but doing an analysis of those cases wherein the address field was empty, it could be determined 
 that in a few cases the addresses is contained into the field person_name.
 
 ## Setting up Libpostal 
