@@ -1,6 +1,6 @@
 # Enriching Patstat: Parsing the addresses from person_name field
 
-Patstat store the information of more than 60 millions of patent applicants, either natural persons or legal entities, 
+Patstat store the information of more than 50 millions of patent applicants, either natural persons or legal entities, 
 most of these these information can be consulted in the table tls206_person. Nevertheless, almost in half of the record 
 the address information is missing, but doing an analysis of those cases wherein the address field was empty, it was determined 
 that in a few cases the addresses is contained into the field person_name.
@@ -18,8 +18,7 @@ docker run -d -p 8080:8080 libpostal-rest
 ```
 ## Extracting and exporting the data
 
-In the table tls206_person exist 35 million of applicants without location, but barely less than 10% of those have any information of the address in the person_name field. Therefore, was wrote a script to catch those records from the person_name field where the value possibly contains an address.
-
+In the table tls206_person exist 36 million of applicants without location, but barely less than 10% of those have any information of the address in the person_name field. Therefore, was wrote a script to catch those records from the person_name field where the value possibly contains an address.
 
 ```sql
 CREATE TABLE patstatAvr2017_NewAddress
@@ -52,4 +51,41 @@ AND (LENGTH(person_name) - LENGTH(REPLACE(person_name, ',', '')))>2 ;
 
 ## Running the script
 
-## Statistics 
+The python script takes a csv file to read the information and export it with the parsed addresses into another csv file called 'export_newaddresses.parsed_names.csv', the input file can be build
+rely on the table prevously created. 
+
+```sql
+SELECT * FROM patstatAvr2017_NewAddress
+INTO OUTFILE '/user/path/export_newaddresses.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\t';
+```
+Then run
+
+```bash
+$ python main.py -f input.csv -o output.csv
+```
+
+## Results
+
+Total applicants: 54'430.027 <br/>
+Total missing addresses: 66.86% (36'396.141) <br/>
+Total parsed addresses: 2.4% (1'308.009)
+
+Most repeated countries in the missing set: 
+
+US: 4'089.722 <br/> 
+DE: 2'279.019 <br/>
+CN: 1'659.627 <br/>
+JP: 1'517.810 <br/>
+FR: 8'71.033 <br/>
+NULL: 18'234.066 
+
+Most repeated countries in the parsed addresses set:
+
+DE:	166.479 <br/>
+JP:	53.361 <br/>
+US:	46.918 <br/>
+FR:	12.179 <br/>
+NULL: 1'025.757

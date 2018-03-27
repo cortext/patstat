@@ -19,7 +19,7 @@ def parse_patstat_address(ifile):
 
     for row in ifile:
         person_name = row['person_name']
-        list_res = parse_address(person_name)
+        list_res = libpstal_api(person_name)
         array_length = len(list_res)
         res = ''
 
