@@ -48,8 +48,7 @@ AND (LENGTH(person_name) - LENGTH(REPLACE(person_name, ',', '')))>2 ;
 
 ## Running the script
 
-The python script takes a csv file to read the information and export it with the parsed addresses into another csv file called 'export_newaddresses.parsed_names.csv', the input file can be build
-rely on the table prevously created. 
+The python script takes a csv file where the information is read and export it with the parsed addresses into another csv file named as you specify in the script parameter, the input file can be build rely on the previously created table.
 
 ```sql
 SELECT * FROM patstatAvr2017_NewAddress
