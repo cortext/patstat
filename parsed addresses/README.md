@@ -15,7 +15,7 @@ docker run -d -p 8080:8080 libpostal-rest
 ```
 ## Extracting and exporting the data
 
-In the table tls206_person exist 36 million of applicants without location, but barely less than 10% of those have any information of the address in the person_name field. Therefore, was wrote a script to catch those records from the person_name field where the value possibly contains an address.
+In the table tls206_person exist 36 million of applicants without location, but barely less than 10% of those have any information of the address in the person_name field. Therefore, a script was written to catch those records from the person_name field where the value possibly contains an address.
 
 ```sql
 CREATE TABLE patstatAvr2017_NewAddress
