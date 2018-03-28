@@ -71,4 +71,4 @@ Number of application per year for JPO, USPTO, EPO and African Regional Intellec
 | European Patent Office | EP | 126921 | ... | 88789 | 1963223 | 
 | African Regional Intellectual Property Organization | AP | 304 | ... | 220 | 4955 | 
 
-Modify the query (years, patent offices list) according to what to want to calculate.
+Modify the query (years, patent offices list) according to what you want to calculate.

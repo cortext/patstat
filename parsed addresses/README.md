@@ -1,6 +1,6 @@
 # Enriching Patstat: Parsing the addresses from person_name field
 
-Patstat store the information of more than 50 millions of patent applicants, either natural persons or legal entities, most of this information can be consulted in the table tls206_person. Nevertheless, in almost in half of the records the address information is missing, but doing an analysis of those cases wherein the address field was empty it could be determined that in few records the addresses is contained into the field person_name.
+Patstat store the information for applicants and inventors of 89'505.837 millions of applications. Most of this information is accessible in table tls206_person which contains 54'430.027 millions of distinct addresses. Nevertheless, in almost half of the records the address information is missing, but doing an analysis of those cases wherein the address field was empty it could be determined that in few records the addresses is contained into the field person_name.
 
 ## Setting up Libpostal 
 
@@ -15,7 +15,7 @@ docker run -d -p 8080:8080 libpostal-rest
 ```
 ## Extracting and exporting the data
 
-In the table tls206_person exist 36 million of applicants without location, but barely less than 10% of those have any information of the address in the person_name field. Therefore, a script was written to catch those records from the person_name field where the value possibly contains an address.
+In the table tls206_person exist 36 million of applicants without location, but barely 5% of those have any information of the address in the person_name field. Therefore, a script was written to catch those records from the person_name field where the value possibly contains an address.
 
 ```sql
 CREATE TABLE patstatAvr2017_NewAddress
