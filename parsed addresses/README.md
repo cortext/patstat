@@ -68,20 +68,15 @@ $ python main.py -f input.csv -o output.csv
 Total applicants: 54'430.027 <br/>
 Total missing addresses: 66.86% (36'396.141) <br/>
 Total parsed addresses: 2.4% (1'308.009)
+<br/>
 
-Most repeated countries in the missing set: 
+| Ctry Code | tls206_person table | missing addr | parsed addr | 
+| --- | --- | --- | --- |
+| US | 1'0448.561 | 4'089.722 | 46.918 |
+| DE | 3'888.889 | 2'279.019 | 166.479 |
+| CN | 2'050.877 | 1'659.627 | 8.047 |
+| JP | 4'853.299 | 1'517.810 | 53.361 | 
+| FR | 1'632.523 | 871.033 | 12.179 | 
+| NULL | 18'565.900 | 18'234.066 | 1'025.757 |
+| Total | 54'430.027 | 36'396.141 | 1'308.009 |
 
-US: 4'089.722 <br/> 
-DE: 2'279.019 <br/>
-CN: 1'659.627 <br/>
-JP: 1'517.810 <br/>
-FR: 8'71.033 <br/>
-NULL: 18'234.066 
-
-Most repeated countries in the parsed addresses set:
-
-DE:	166.479 <br/>
-JP:	53.361 <br/>
-US:	46.918 <br/>
-FR:	12.179 <br/>
-NULL: 1'025.757
