@@ -1,4 +1,4 @@
-# Classify Legal Entities And Individuals From Patent Applicants
+# Classifying Legal Entities And Individuals From Patent Applicants
 
 ## Goals
 
