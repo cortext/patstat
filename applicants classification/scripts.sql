@@ -25,7 +25,7 @@ DELETE FROM known WHERE known.doc_std_name_id in (SELECT  prob_lega.doc_std_name
 
 CREATE TABLE prob_person AS
  SELECT  person_id, person_name, doc_std_id, doc_std_name_id, invt_seq_nr
- FROM    t_juan.set1
+ FROM    set1
  WHERE   doc_std_id IN (SELECT invt_addr_ifris.doc_std_name_id FROM invt_addr_ifris WHERE source <> "MISSING");
  
 -- CLEAN REPEATED DATA
