@@ -2,17 +2,15 @@
 
 ## Introduction
 
-One of the main goal in our research group is the study and analysis in the behaivor of invetions and innovations made by legal entities, such as corporations, universities, research centers and in general every class of entity that do not fit into the “natural person” classification.
+One of the main goals in our research activities is the study and analysis in the behavior of inventions and innovations made by legal entities, such as corporations, universities, research centers and in general every class of entity that do not fit into the categorization of “natural person”. Considering the above, we have worked with the data contributed by PATSTAT to start with the data restructuring in order to begin on the classification process, in this way we have defined two entities classes, legal and person. Thus, the present repository detail the required process to achive that objective.
 
-Considering this and always based on the data contributed by PATSTAT we started with a data restructuring to proceed on the classification effort, in this way we defined two entity class, legal and person. Thus, the present repository detail all the needed process to meet the objective.
-
-Is important clarify that the number of stored applications on PATSTAT are more than 80 million and the number of applicants are near to 10 million, then, the execution for some of our functions normally might require a huge amount of time to be completed, of course that relate to the computer resource of each one.
+Is important to clarify that the number of applications stored on PATSTAT are more than 80 million and the number of applicants are nearly 10 million, hence, the execution for some of the functions presented in this repository usually should require a huge amount of time to be complete, of course, that this is related to the computational resources of each one.
 
 ## Classification of entities 
 
-In the entities that we can classify within patstat applicants a large proportion of homonym names coexist, for instance, the word 'Ford' may be tagged as a company or as an individual, which means that, using a direct approach of detection where several functions that implement gazetteers by combing with regular expression could lead in a low quality results for the categorization of legal entities and individuals.
+In the entities that can be found within the patstat applicants coexist a large proportion of homonym names, for instance, the word 'Ford' may be tagged as a company or as an individual, which means that, using a direct approach of detection where several functions that implement gazetteers by combing with regular expression could lead in a low quality results for the categorization of legal entities and individuals.
 
-Therefore, we turn the approach of the solution, instead of merely doing a direct match we used a heuristic approach in the patent context in order to separate the different entities with three subsets named as 'probably legal', 'probably individual' and 'ambiguous'. The allocation of each entity is designated by a series of methods and rules that are relay on not only on the used of gaztteers but on the caracterization of the applicant, through the relation with the patent and some simple lexical identifiers.
+Therefore, we turn the approach of the solution, instead of merely doing a direct match we used an heuristic approach in the patent context in order to separate the different entities into three subsets named as 'probably legal', 'probably individual' and 'ambiguous'. The allocation of each entity is designated by a serie of methods and rules that are relay on not only on the used of gaztteers but on the caracterization of the applicant through the relation with the patent, besides some simple lexical identifiers.
 
 ### Creating sets: probably legal, probably person and unkown.
 
