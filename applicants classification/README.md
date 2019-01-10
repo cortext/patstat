@@ -1,6 +1,6 @@
 # Classifying Legal Entities And Individuals From Patent Applicants
 
-## Goals
+## Introduction
 
 One of the main goal in our research group is the study and analysis in the behaivor of invetions and innovations made by legal entities, such as corporations, universities, research centers and in general every class of entity that do not fit into the “natural person” classification.
 
@@ -8,11 +8,11 @@ Considering this and always based on the data contributed by PATSTAT we started 
 
 Is important clarify that the number of stored applications on PATSTAT are more than 80 million and the number of applicants are near to 10 million, then, the execution for some of our functions normally might require a huge amount of time to be completed, of course that relate to the computer resource of each one.
 
-## Classification of Entities
+## Classification of entities 
 
-The initial assumption about how to get into the problem and solve it was through a small function with a big list of regular expressions that establish base on identifiers like “inc” “corp” etc wich determine if an applicant is a legal entity or not. But it was not so simple, for the fact, that a huge amount of companies does not have this kind of identifiers, like IBM. 
+In the entities that we can classify within patstat applicants a large proportion of homonym names coexist, for instance, the word 'Ford' may be tagged as a company or as an individual, which means that, using a direct approach of detection where several functions that implement gazetteers by combing with regular expression could lead in a low quality results for the categorization of legal entities and individuals.
 
-Then we try to turn the approach of the solution, instead of matching legals entities we wanted to identify the persons with three different methods, the first one was based on the structure of their names, the second one was with regular expression that matched cases when the applicant have Phd. or Dr. words and the third one is a dictionary of common names. But we found that a lot of companies have the same structure as a person name and even worse some companies were created with a persons name. So the solution was longer than we thought.
+Therefore, we turn the approach of the solution, instead of merely doing a direct match we used a heuristic approach in the patent context in order to separate the different entities with three subsets named as 'probably legal', 'probably individual' and 'ambiguous'. The allocation of each entity is designated by a series of methods and rules that are relay on not only on the used of gaztteers but on the caracterization of the applicant, through the relation with the patent and some simple lexical identifiers.
 
 ### Creating sets: probably legal, probably person and unkown.
 
