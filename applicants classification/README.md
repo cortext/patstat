@@ -8,9 +8,9 @@ Is important to clarify that the number of applications stored on PATSTAT are mo
 
 ## Classification of entities 
 
-In the entities that can be found within the patstat applicants coexist a large proportion of homonym names, for instance, the word 'Ford' may be tagged as a company or as an individual, which means that, using a direct approach of detection where several functions that implement gazetteers and by combing regular expressions, could lead in a low quality results for the categorization of legal entities and individuals.
+In the entities that can be found within the patstat applicants coexist a large proportion of homonym names, for instance, the word 'Ford' may be tagged as a company or as an individual, which means that, using a direct approach of detection where several functions that implement gazetteers and by combing regular expressions, could lead in a low quality results for the categorization of legal entities and individuals. Another ambiguity that we had to faced to is for companies names that do not have any corporate ending and consequently is not likely that we are able to label those entities with just a dictionary list of legal suffix.
 
-Therefore, we turn the approach of the solution, instead of merely doing a direct match we used an heuristic approach in the patent context in order to separate the different entities into three subsets named as 'probably legal', 'probably individual' and 'ambiguous'. The allocation of each entity is designated by a series of methods and rules that are relay on not only on the used of gaztteers but on the characterization of the applicants through the relation with the patent, besides some simple lexical identifiers.
+Therefore, we turn the approach of the solution, instead of merely doing a direct match of terms we used an heuristic approach in the patent context in order to separate the different entities into three subsets named as 'probably legal', 'probably individual' and 'ambiguous'. The allocation of each entity is designated by a series of methods and rules that are relay on not only on the used of gaztteers but on the characterization of the applicants through the relation with the patent, besides some simple lexical identifiers.
 
 ### Creating sets: probably legal, probably person and unkown.
 
