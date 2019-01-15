@@ -1,0 +1,16 @@
+[sshtunnel]
+ssh_host = xx.xx.xx.xx
+ssh_port = port
+ssh_user = ssh_user
+ssh_pass = ssh_pass
+
+[remotedb]
+db_hostname = xx.xx.xx.xx
+db_username = database_user 
+db_password = database_pass
+db_database = main_database
+db_port = database_port
+
+[localhost]
+ip = xx.xx.xx.xx
+port_forward = port 
