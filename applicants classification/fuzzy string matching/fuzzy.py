@@ -3,6 +3,7 @@ import pandas as pd
 from sshtunnel import SSHTunnelForwarder
 from os.path import expanduser
 import configparser
+from fuzzywuzzy import fuzz
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -42,5 +43,17 @@ with SSHTunnelForwarder(
 
     df = pd.read_sql_query(query, conn)
     cursor = conn.cursor()
+    for index, row in df.iterrows():
+        if(row['doc_std_name']):
+            row['doc_std_name'] = row['doc_std_name'].upper()
+
+        ratio = fuzz.token_set_ratio(row['person_name'].upper(),
+                                     row['doc_std_name'])
+
+        query = 'INSERT INTO fuzzy_match_list VALUES (%s, %s, %s, %s, %s)'
+        new_record = (row['person_id'], row['person_name'],
+                      row['doc_std_name_id'], row['doc_std_name'], ratio)
+        cursor.execute(query, new_record)
+        conn.commit()
 
     conn.close()
