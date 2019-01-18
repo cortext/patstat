@@ -12,28 +12,44 @@ WHERE invt_seq_nr = 0
 GROUP BY doc_std_name_id;
  
 -- STEP 2 Create table with unkown entities where inventors sequence is different than 0
-CREATE TABLE known AS 
-SELECT appln.doc_std_name_id, tls208_doc_std_nms.doc_std_name,appln.person_id,appln.person_name,appln.invt_seq_nr
- FROM  applt_addr_ifris as appln
- INNER JOIN tls208_doc_std_nms ON appln.doc_std_name_id = tls208_doc_std_nms.doc_std_name_id
- WHERE appln.invt_seq_nr > 0 
- GROUP BY doc_std_name_id;
+CREATE TABLE entities_recognition_unkown AS
+SELECT doc_std_name_id,
+       doc_std_name,
+       person_id,
+       person_name,
+       invt_seq_nr
+FROM applt_addr_ifris
+WHERE invt_seq_nr > 0
+GROUP BY doc_std_name_id;
+
+-- Clean repeated data
+DELETE
+FROM entities_recognition_unkown
+WHERE doc_std_name_id IN
+    (SELECT doc_std_name_id
+     FROM entities_recognition_probably_legal);
+
+-- STEP 3  Create table with probably individuals where source is different than “Missing”
+CREATE TABLE entities_recognition_probably_person AS
+SELECT doc_std_name_id,
+       doc_std_name,
+       person_id,
+       person_name,
+       invt_seq_nr
+FROM entities_recognition_unkown
+WHERE doc_std_name_id IN
+    (SELECT doc_std_name_id
+     FROM patstat_database.invt_addr_ifris
+     WHERE SOURCE <> "MISSING");
 
 -- CLEAN REPEATED DATA
-DELETE FROM known WHERE known.doc_std_name_id in (SELECT  prob_lega.doc_std_name_id FROM prob_legal);
-
--- STEP 3  Where source is different to “Missing”
-
-CREATE TABLE prob_person AS
- SELECT  person_id, person_name, doc_std_id, doc_std_name_id, invt_seq_nr
- FROM    set1
- WHERE   doc_std_id IN (SELECT invt_addr_ifris.doc_std_name_id FROM invt_addr_ifris WHERE source <> "MISSING");
- 
--- CLEAN REPEATED DATA
-DELETE FROM known WHERE known.doc_std_name_id in (SELECT prob_person.doc_std_name_id FROM prob_person); 
+DELETE
+FROM entities_recognition_unkown
+WHERE doc_std_name_id IN
+    (SELECT doc_std_name_id
+     FROM entities_recognition_probably_person);
 
 -- STEP 4 The applicants with no more than 1 application
-
 INSERT INTO prob_person
 SELECT   
 		 a.person_id,
