@@ -1,16 +1,17 @@
- 
- -- STEP 1 Inventors sequence equal to 1 
- 
-CREATE TABLE prob_legal AS 
-SELECT appln.doc_std_name_id, tls208_doc_std_nms.doc_std_name, appln.person_id,appln.person_name,appln.invt_seq_nr
- FROM applt_addr_ifris as appln
- INNER JOIN tls208_doc_std_nms ON appln.doc_std_name_id = tls208_doc_std_nms.doc_std_name_id
- WHERE   appln.invt_seq_nr = 0 
- GROUP BY doc_std_name_id;
- 
- 
--- STEP 2 Inventors sequence different to 0
+ USE `your_database`;
 
+-- STEP 1 Create table with probably legal entities where inventors sequence is equal than 1 
+CREATE TABLE entities_recognition_probably_legal AS
+SELECT doc_std_name_id,
+       doc_std_name,
+       person_id,
+       person_name,
+       invt_seq_nr
+FROM applt_addr_ifris
+WHERE invt_seq_nr = 0
+GROUP BY doc_std_name_id;
+ 
+-- STEP 2 Create table with unkown entities where inventors sequence is different than 0
 CREATE TABLE known AS 
 SELECT appln.doc_std_name_id, tls208_doc_std_nms.doc_std_name,appln.person_id,appln.person_name,appln.invt_seq_nr
  FROM  applt_addr_ifris as appln
