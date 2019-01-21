@@ -22,7 +22,7 @@ FROM applt_addr_ifris
 WHERE invt_seq_nr > 0
 GROUP BY doc_std_name_id;
 
--- Clean repeated data
+-- Cleaning repeated data
 DELETE
 FROM entities_recognition_unkown
 WHERE doc_std_name_id IN
@@ -39,34 +39,36 @@ SELECT doc_std_name_id,
 FROM entities_recognition_unkown
 WHERE doc_std_name_id IN
     (SELECT doc_std_name_id
-     FROM patstat_database.invt_addr_ifris
+     FROM patstat.invt_addr_ifris
      WHERE SOURCE <> "MISSING");
 
--- CLEAN REPEATED DATA
+-- Cleaning repeated data
 DELETE
 FROM entities_recognition_unkown
 WHERE doc_std_name_id IN
     (SELECT doc_std_name_id
      FROM entities_recognition_probably_person);
 
--- STEP 4 The applicants with no more than 1 application
-INSERT INTO prob_person
-SELECT   
-		 a.person_id,
-		 a.person_name,	 
-		 a.doc_std_name_id,
-		 a.doc_std_name,
-		 a.invt_seq_nr
-FROM     unkown as a
-INNER JOIN applt_addr_ifris AS b ON a.doc_std_name_id = b.doc_std_name_id  
+-- STEP 4 Insert the applicants with no more than 1 application
+INSERT INTO entities_recognition_probably_person
+SELECT a.doc_std_id,
+       a.doc_std_name,
+       a.person_id,
+       a.person_name,
+       a.invt_seq_nr
+FROM entities_recognition_unkown AS a
+INNER JOIN applt_addr_ifris AS b ON a.doc_std_name_id = b.doc_std_name_id
 GROUP BY doc_std_name_id
-HAVING   COUNT(a.doc_std_name_id) < 2
+HAVING COUNT(a.doc_std_name_id) < 2;
 
--- CLEAN REPEATED DATA
-DELETE FROM known WHERE known.doc_std_name_id in (SELECT prob_person.doc_std_name_id FROM prob_person); 
+-- Cleaning data
+DELETE
+FROM entities_recognition_unkown
+WHERE doc_std_name_id IN
+    (SELECT doc_std_name_id
+     FROM entities_recognition_probably_person);
 
 -- STEP 5 From probable legal to probable person set
-
 INSERT INTO prob_person
 SELECT   
 		 a.person_id,
@@ -81,12 +83,10 @@ GROUP BY doc_std_name_id
 HAVING   COUNT(a.doc_std_name_id) < 21
 ORDER BY COUNT(a.doc_std_name_id) DESC 
 
-
 -- CLEAN REPEATED DATA
 DELETE FROM prob_legal WHERE prob_legal.doc_std_name_id in (SELECT doc_std_name_id FROM prob_person); 
 
 -- STEP 6 From probable legal to probable person set2
-
 INSERT INTO prob_person
   SELECT   
 		 a.person_id,
@@ -103,9 +103,7 @@ HAVING   COUNT(a.doc_std_name_id) < 200
 -- CLEAN REPEATED DATA
 DELETE FROM prob_legal WHERE prob_legal in (SELECT prob_person.doc_std_name_id FROM prob_person); 
 
-
 -- STEP 7 Create temporal table
-
 CREATE TABLE temporal AS
  SELECT
 	   a.person_id,
