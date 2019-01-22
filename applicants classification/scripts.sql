@@ -92,24 +92,31 @@ WHERE doc_std_name_id IN
     (SELECT doc_std_name_id
      FROM entities_recognition_probably_person);
 
--- STEP 6 From probable legal to probable person set2
-INSERT INTO prob_person
-  SELECT   
-		 a.person_id,
-		 a.person_name,	 
-		 a.doc_std_name_id,
-		 a.doc_std_name,
-		 a.invt_seq_nr
-FROM     prob_legal as a
-INNER JOIN applt_addr_ifris AS b ON a.doc_std_name_id = b.doc_std_name_id  
-WHERE (a.person_name LIKE "%,%" OR a.person_name LIKE "%;%") AND (a.doc_std_name_id IN (SELECT doc_std_name_id FROM invt_addr_ifris))
+-- STEP 6 From probably legal to probably person set
+INSERT INTO entities_recognition_probably_person
+SELECT a.doc_std_id,
+       a.doc_std_name,
+       a.person_id,
+       a.person_name,
+       a.invt_seq_nr
+FROM entities_recognition_probably_legal AS a
+INNER JOIN applt_addr_ifris AS b ON a.doc_std_name_id = b.doc_std_name_id
+WHERE (a.person_name LIKE "%,%"
+       OR a.person_name LIKE "%;%")
+  AND (a.doc_std_name_id IN
+         (SELECT doc_std_name_id
+          FROM invt_addr_ifris))
 GROUP BY doc_std_name_id
-HAVING   COUNT(a.doc_std_name_id) < 200
+HAVING Count(a.doc_std_name_id) < 200;
 
--- CLEAN REPEATED DATA
-DELETE FROM prob_legal WHERE prob_legal in (SELECT prob_person.doc_std_name_id FROM prob_person); 
+-- Cleaning data
+DELETE
+FROM entities_recognition_probably_legal
+WHERE doc_std_name_id IN
+    (SELECT doc_std_name_id
+     FROM entities_recognition_probably_person);
 
--- STEP 7 Create temporal table
+-- STEP 7 Creating temporal table
 CREATE TABLE temporal AS
  SELECT
 	   a.person_id,
