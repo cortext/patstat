@@ -8,7 +8,7 @@ Is important to clarify that the number of applications stored on PATSTAT are mo
 
 ## Classification of entities 
 
-In the entities that can be found within the patstat applicants coexist a large proportion of homonym names, for instance, the word 'Ford' may be tagged as a company or as an individual, which means that, using a direct approach of detection where several functions that implement gazetteers and by combing regular expressions, could lead in a low quality results for the categorization of legal entities and individuals.
+In the entities that can be found within the patstat applicants coexist a large proportion of homonym names, for instance, the word 'Ford' may be tagged as a company or as an individual, which means that, using a direct approach of detection where several functions that implement gazetteers and by combing regular expressions could lead in a low quality results for the categorization of legal entities and individuals.
 
 Therefore, we turn the approach of the solution, instead of merely doing a direct match we used an heuristic approach in the patent context in order to separate the different entities into three subsets named as 'probably legal', 'probably individual' and 'ambiguous'. The allocation of each entity is designated by a series of methods and rules that are relay on not only on the used of gaztteers but on the characterization of the applicants through the relation with the patent, besides some simple lexical identifiers.
 
