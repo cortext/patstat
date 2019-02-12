@@ -1,4 +1,4 @@
-# Enriching Patstat: Parsing the addresses from person_name field
+# Enriching Patstat: Parsing addresses from person_name field
 
 Patstat store the information for applicants and inventors of 89'505.837 millions of applications. Most of this information is accessible in the table tls206_person which contains 54'430.027 millions of distinct addresses. Nevertheless, in almost half of the records the address information is missing, but doing an analysis of those cases wherein the address field was empty it could be determined that in few records the addresses is contained into the field person_name.
 
