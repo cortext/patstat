@@ -4,6 +4,8 @@ from sshtunnel import SSHTunnelForwarder
 from os.path import expanduser
 import configparser
 from fuzzywuzzy import fuzz
+from progress.bar import Bar
+
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -43,6 +45,9 @@ with SSHTunnelForwarder(
 
     df = pd.read_sql_query(query, conn)
     cursor = conn.cursor()
+    shape = df.shape
+    bar = Bar('Processing', max=shape[0])
+
     for index, row in df.iterrows():
         if(row['doc_std_name']):
             row['doc_std_name'] = row['doc_std_name'].upper()
@@ -55,5 +60,7 @@ with SSHTunnelForwarder(
                       row['doc_std_name_id'], row['doc_std_name'], ratio)
         cursor.execute(query, new_record)
         conn.commit()
+        bar.next()
 
+    bar.finish()
     conn.close()
