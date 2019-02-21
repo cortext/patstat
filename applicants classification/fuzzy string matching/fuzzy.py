@@ -6,7 +6,6 @@ import configparser
 from fuzzywuzzy import fuzz
 from progress.bar import Bar
 
-
 config = configparser.ConfigParser()
 config.read('config.ini')
 home = expanduser('~')
@@ -16,23 +15,23 @@ sql_hostname = config['remotedb']['db_hostname']
 sql_username = config['remotedb']['db_username']
 sql_password = config['remotedb']['db_password']
 sql_main_database = config['remotedb']['db_database']
-sql_port = config['remotedb']['db_port']
+sql_port = int(config['remotedb']['db_port'])
 
 # ssh tunnel auth
 ssh_host = config['sshtunnel']['ssh_host']
 ssh_user = config['sshtunnel']['ssh_user']
 ssh_pass = config['sshtunnel']['ssh_pass']
-ssh_port = config['sshtunnel']['ssh_port']
+ssh_port = int(config['sshtunnel']['ssh_port'])
 
 localhost = config['localhost']['ip']
-port_forward = config['localhost']['port_forward']
+port_forward = int(config['localhost']['port_forward'])
 
 # query variables
-table_applicants = ''
-limit_to_match = 'memory'
+table_applicants = 'person_name_list'
+limit_to_match = '100'
 
 with SSHTunnelForwarder(
-         (ssh_host, ssh_port),
+         (ssh_host, 22),
          ssh_username=ssh_user,
          ssh_password=ssh_pass,
          remote_bind_address=(sql_hostname, sql_port),
@@ -40,8 +39,8 @@ with SSHTunnelForwarder(
     conn = pymysql.connect(host=localhost, user=sql_username,
                            passwd=sql_password, db=sql_main_database,
                            port=tunnel.local_bind_port)
-    query = 'SELECT * FROM' + table_applicants + ' LIMIT '
-    + limit_to_match + ';'
+
+    query = 'SELECT * FROM ' + table_applicants + ' LIMIT ' + limit_to_match + ';'
 
     df = pd.read_sql_query(query, conn)
     cursor = conn.cursor()
