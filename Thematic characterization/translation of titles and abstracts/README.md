@@ -7,12 +7,17 @@ tls203_appln_title.
 
 These tables also have a column that specifies the language of the title or
 abstract, and, in a lot of cases, textual information about a certain patent can
-only be found in one language, mostly the one from the country where the
-application was first issued.
+be found only in one language, and, for most of those, it is the language from
+the country where the patent application was first issued.
 
-With this in mind, we have decided to translate abstracts and titles to English, the most widely used language, and make these translations available in patstat-ifris.
+With this in mind, we have decided to translate abstracts and titles to English,
+the most widely used language, and make these translations available in
+patstat-ifris.
 
-You can find out where the translated texts are and how we did it [here](docs/README.md).
+You can find out where the translated texts are and how we did it 
+[here](docs/README.md).
+
+Below is a summary of the number of patents for each language.
 
 Titles:
 

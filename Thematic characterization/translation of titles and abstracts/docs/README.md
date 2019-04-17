@@ -1,10 +1,13 @@
 # Patstat-IFRIS titles and abstracts
 
-This is a description of the final result. If you want details on how we did it, go [here](script.md). 
+Below is a description of the tables and contents of the database after
+translating titles/abstracts. If you want details on the process, go
+[here](script.md). 
 
 ## Which patents were translated?
 
-For Patstat-IFRIS we have translated the titles and abstracts that were originally written the following languages:
+For Patstat-IFRIS we have translated titles and abstracts that were originally
+written in the following languages:
 
 | Language   | Language code |
 |------------|---------------|
@@ -24,14 +27,13 @@ There are two separate tables for titles and abstracts of the patents in the dat
 - **Titles**: tls202_appln_title
 - **Abstracts**: tls203_appln_abstr
 
-And both have a very similar structure, with columns for:
+Both have a very similar structure, with columns for:
 
-- patent id
+- patent identifier
 - language
 - title/abstract
 
-So, for the translation, we have added **an extra column** to these tables,
-which contains the title/abstract, in English.
+We have added **an extra column** to these tables, which contains the title/abstract, in English.
 
 ## Table columns
 
