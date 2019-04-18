@@ -11,7 +11,7 @@
   * Configuration object loaded from the file `./config.json`  
   * This file must have the following structure (**not enforced in code** but the script
   * will fail at some point if any of the values is not provided):
-  * ```json
+  * ```json5
   * {
   *   "db": { // database-related parameters
   *     "connection": {
