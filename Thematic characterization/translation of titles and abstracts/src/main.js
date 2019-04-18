@@ -96,12 +96,12 @@ const {
 let nRows = 0;
 
 /**
- * @type {Array<db/Worker>}
+ * @type {Array<Worker>}
  * @alias module:main~workers
  * @description
  * Array holding references to the workers. These are the
  * ones in charge of querying the database.
- * @see {@link module:db/Worker|Worker}
+ * @see {@link Worker|Worker}
  */
 const workers = [];
 
@@ -140,6 +140,7 @@ function mockInputText(record) {
  * amount of concurrent calls to this function is determined by 
  * {@link module:main~nConcurrentWorks}.
  * @see {@link module:main~setupWork}
+ * @see {@link Worker}
  */
 async function doWork(from, to, intervalSize) {
   const dbWorker = new db.Worker(from, to, batchSize, intervalSize);
