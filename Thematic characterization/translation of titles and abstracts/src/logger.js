@@ -12,7 +12,7 @@
  * - **format**: colorize, timestamp, align, cli
  * - **transports**: console and file  
  * This module does not expose any members.
- * @requires {@link https://www.npmjs.com/package/winston|winston}
+ * @requires winston
  * @see {@link https://github.com/winstonjs/winston#usage|winstonjs}
  */
 

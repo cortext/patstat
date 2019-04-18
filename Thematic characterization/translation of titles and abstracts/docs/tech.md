@@ -466,7 +466,7 @@ Sets up the configuration values for the default instance of winston.
 - **transports**: console and file  
 This module does not expose any members.
 
-**Requires**: <code>{@link https://www.npmjs.com/package/winston\|winston}</code>  
+**Requires**: <code>module:winston</code>  
 **See**: [winstonjs](https://github.com/winstonjs/winston#usage)  
 <a name="module_logger..logFilename"></a>
 
@@ -482,7 +482,7 @@ Main module of the script. Sets up and runs the translation work.
 This module does not expose any members, it is intended to be the main unit
 of execution and use the other modules.
 
-**Requires**: <code>{@link https://www.npmjs.com/package/winston\|winston}</code>, [<code>db</code>](#module_db), [<code>translator</code>](#module_translator), [<code>reporter</code>](#module_reporter)  
+**Requires**: <code>module:winston</code>, [<code>db</code>](#module_db), [<code>translator</code>](#module_translator), [<code>reporter</code>](#module_reporter)  
 
 * [main](#module_main)
     * [~columnToTranslate](#module_main..columnToTranslate) : <code>string</code>

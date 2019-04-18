@@ -253,7 +253,7 @@ function init() {
  * Main module of the script. Sets up and runs the translation work.  
  * This module does not expose any members, it is intended to be the main unit
  * of execution and use the other modules.
- * @requires {@link https://www.npmjs.com/package/winston|winston}
+ * @requires winston
  * @requires db
  * @requires translator
  * @requires reporter
