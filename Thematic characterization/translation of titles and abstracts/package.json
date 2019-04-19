@@ -6,26 +6,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "./node_modules/.bin/jsdoc index.js src -r -c jsdoc.json",
-    "doc-md": "./node_modules/.bin/jsdoc2md index.js \"./src/**/*.js\" > docs/tech.md"
+    "doc-md": "jsdoc2md index.js \"./src/**/*.js\" > docs/tech.md"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bottleneck": "^2.17.1",
+    "bottleneck": "^2.18.0",
     "command-line-args": "^5.1.1",
     "draftlog": "^1.0.12",
     "joi": "^14.3.1",
     "mysql2": "^1.6.5",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
-    "sequelize": "^5.2.11",
     "winston": "^3.2.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "jsdoc": "^3.5.5",
-    "jsdoc-to-markdown": "^4.0.1"
+    "eslint-plugin-import": "^2.17.2",
+    "jsdoc": "github:jsdoc3/jsdoc#master"
   }
 }
