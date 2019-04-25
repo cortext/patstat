@@ -157,7 +157,7 @@ with open(ifname, "rb") as ifile:
     dicToCsv(ofname, csv_columns, dict_data['desc'])
 
     # Create the simple ipc table
-    csv_columns = [' ipc_class_level', 'description', 'ipc_version']
+    csv_columns = ['ipc_class_level', 'description', 'ipc_version']
     ofname = '03_ipc_list.output.csv'
     dicToCsv(ofname, csv_columns, dict_data['ipc'])
 
