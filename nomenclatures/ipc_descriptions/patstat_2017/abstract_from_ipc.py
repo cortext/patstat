@@ -15,8 +15,9 @@ RESULT_FOLDER = 'results'
 
 s = requests.Session()
 
+
 def getAPIResponse(symbol):
-    payload = { 'symbol': symbol }
+    payload = {'symbol': symbol}
     result = s.get(SERVICE_URL, params=payload)
     return result.json()
 
@@ -41,7 +42,7 @@ def formatCPCtoIPC(symbol):
     contains a '/', characters before the '/' are zero padded left to form a 4
     character string and characters after the '/' are zero padded right to form
     a 6 character string. If no '/' is present, whatever comes after the first
-    four characters is zero padded left to form a 4 character string, and zeroes
+    four characters is zero padded left to form a 4 character string, and zeros
     are used for the remaining 6 characters.
 
     If the input string does not contain a '/' and it is less than 4 characters
@@ -72,12 +73,14 @@ def formatCPCtoIPC(symbol):
         group = '0000' + symbol[4:]
         group = group[-4:]
         return symbol[0:4] + group + '000000'
-    else: # unknown format
+    else:
+        # unknown format
         return symbol
 
 
 # A description is:
-# ipc_position: The position that the IPC symbol belongs to. This is the symbol of the 3rd level.
+# ipc_position: The position that the IPC symbol belongs to. This is the
+# symbol of the 3rd level.
 # ipc_desc: All the concatenate descriptions of the levels below the 3rd.
 # level: The level that the IPC symbol belongs to.
 def makeIPCDescription(symbolInfo):
@@ -105,7 +108,7 @@ def makeIPCDescription(symbolInfo):
 
     Returns
     -------
-    dict 
+    dict
         A dictionary with the symbol's corresponding 'ipc_position', 'ipc_desc'
         and 'level'
     """
@@ -117,8 +120,8 @@ def makeIPCDescription(symbolInfo):
         # Clean and append
         elementText = element['textBody'].replace('\n', ' ')
         ipc_desc += elementText + ' '
-    
-    # Format if there's anything to format
+
+    # Format if theres anything to format
     if ipc_desc:
         ipc_desc = addDot(ipc_desc[:-1]) + '.'
         ipc_desc = cleanText(ipc_desc)
@@ -134,10 +137,12 @@ def makeIPCDescription(symbolInfo):
 
 
 # ipc_position: the first three levels symbol.
-# section: The title of the level, that means only the first part of the description (Uppercases).
+# section: The title of the level, that means only the first part of the
+# description (Uppercases).
 # class: The same as section.
 # subclass: The same as section.
-# full_subclass: The complete description of the subclass level (Uppercase and lower cases).
+# full_subclass: The complete description of the subclass level
+# (Uppercase and lower cases).
 def makeIPCPosition(symbolInfo):
     """
     Constructs a 'position' for the symbol (ipc_position, section, class,
@@ -172,13 +177,15 @@ def makeIPCPosition(symbolInfo):
     # symbol up to the 3rd level
     ipc_position = symbolInfo[2]['symbol']
 
-    # section, class and subclass from first 3 parts of symbol information (uppercase, cleanes)
+    # section, class and subclass from first 3 parts of symbol information
+    # (uppercase, cleanes)
     ipc_section = cleanTitles(symbolInfo[0]['textBody'])
     ipc_class = cleanTitles(symbolInfo[1]['textBody'])
     ipc_subclass = cleanTitles(symbolInfo[2]['textBody'])
 
     # full text of 3rd level without \ns and "s
-    ipc_full_subclass = symbolInfo[2]['textBody'].replace('\n', ' ').replace('"', '')
+    ipc_full_subclass = symbolInfo[2]['textBody'].replace(
+        '\n', ' ').replace('"', '')
 
     return {
         'ipc_position': ipc_position,
@@ -189,7 +196,8 @@ def makeIPCPosition(symbolInfo):
     }
 
 
-# description: The direct, simple description of the international patent classification
+# description: The direct, simple description of the international
+# patent classification
 def makeIPCListItem(symbolData):
     """
     Constructs a list item for the symbol (description) without the attributes
@@ -215,7 +223,8 @@ def makeIPCListItem(symbolData):
         A dictionary with the symbol's corresponding 'description'.
     """
 
-    # It is the textBody of the array's last element (the one with the highest level is the one that was asked for)
+    # It is the textBody of the array's last element
+    # (the one with the highest level is the one that was asked for)
     ipc_description = symbolData[-1]['textBody'].replace('\n', ' ') + '.'
 
     return {
@@ -228,7 +237,7 @@ def makeIPCListItem(symbolData):
 def makeIPCHierarchy(symbolInfo):
     """
     Constructs a 'hierarchy' dictionary for the symbol (ancestor, parent)
-    without the attributes it shares with the other structures. Assumes 
+    without the attributes it shares with the other structures. Assumes
     symbolInfo is sorted by its members' 'level' value.
 
     A list item for a symbol consists in:
@@ -252,7 +261,8 @@ def makeIPCHierarchy(symbolInfo):
 
     # The first one
     ipc_parent = symbolInfo[0]['symbol']
-    # As the last element is the one that was asked for, the ancestor is the one before the last, so -2
+    # As the last element is the one that was asked for, the ancestor is the
+    # one before the last, so -2
     ipc_ancestor = symbolInfo[-2]['symbol']
 
     return {
@@ -266,9 +276,9 @@ def getIPCStructures(rawSymbol):
     Constructs the structures for a given symbol based on what the API responds
     for that symbol.
 
-    Asks the API about the given symbol, then constructs dictionaries for all of
-    the structures (description, position, list_item, hierarchy) based on the
-    response and returns them in an array.
+    Asks the API about the given symbol, then constructs dictionaries for all
+    of the structures (description, position, list_item, hierarchy) based on
+    the response and returns them in an array.
 
     Parameters
     ----------
@@ -463,12 +473,12 @@ def exportResults(results):
     writeToCSV(ofname, csv_columns, results['description'])
 
     # write ipc symbol list to CSV file
-    csv_columns = [ 'ipc_class_level', 'description', 'ipc_version' ]
+    csv_columns = ['ipc_class_level', 'description', 'ipc_version']
     ofname = '03_ipc_list.output.csv'
     writeToCSV(ofname, csv_columns, results['list_item'])
 
     # write 'hierarchy' structures to CSV file
-    csv_columns = [ 'ipc_class_level', 'ancestor', 'parent', 'ipc_version' ]
+    csv_columns = ['ipc_class_level', 'ancestor', 'parent', 'ipc_version']
     ofname = '04_ipc_hierarchy.output.csv'
     writeToCSV(ofname, csv_columns, results['hierarchy'])
 
