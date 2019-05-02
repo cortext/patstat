@@ -164,7 +164,7 @@ And then you can run the script with:
 
 `python abstract_from_ipc.py`
 
-This script reads the input file `ipc_codes_input.csv`, queries the API with this information, and produces the structures described below in 4 output files under the  `results` subfolder
+This script reads the input file `ipc_codes_input.csv`, queries the API with this information, and produces the structures described below in 4 output files under the  `results` subfolder.
 
 ## Collecting the descriptions
 
