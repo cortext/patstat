@@ -184,8 +184,8 @@ def makeIPCPosition(symbolInfo):
     ipc_subclass = cleanTitles(symbolInfo[2]['textBody'])
 
     # full text of 3rd level without \ns and "s
-    ipc_full_subclass = symbolInfo[2]['textBody'].replace(
-        '\n', ' ').replace('"', '')
+    ipc_full_subclass = symbolInfo[2]['textBody'].replace('\n', ' ')
+                                                 .replace('"', '')
 
     return {
         'ipc_position': ipc_position,
