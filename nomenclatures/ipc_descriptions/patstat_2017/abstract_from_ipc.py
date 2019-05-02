@@ -137,7 +137,6 @@ def makeIPCDescription(symbolInfo):
 # class: The same as section.
 # subclass: The same as section.
 # full_subclass: The complete description of the subclass level (Uppercase and lower cases).
-
 def makeIPCPosition(symbolInfo):
     """
     Constructs a 'position' for the symbol (ipc_position, section, class,
@@ -189,7 +188,6 @@ def makeIPCPosition(symbolInfo):
     }
 
 # description: The direct, simple description of the international patent classification
-
 def makeIPCListItem(symbolData):
     """
     Constructs a list item for the symbol (description) without the attributes
@@ -224,7 +222,6 @@ def makeIPCListItem(symbolData):
 
 # ancestor: The preceding level of the ipc_class_level (previous level)
 # parent: The symbol of the section level (first level)
-
 def makeIPCHierarchy(symbolInfo):
     """
     Constructs a 'hierarchy' dictionary for the symbol (ancestor, parent)
@@ -259,7 +256,6 @@ def makeIPCHierarchy(symbolInfo):
         'parent': ipc_parent,
         'ancestor': ipc_ancestor
     }
-
 
 def getIPCStructures(rawSymbol):
     """
@@ -440,7 +436,6 @@ def addDot(s):
     return result
 
 # This writes the results to files
-
 def exportResults(results):
     # write 'position' structures to CSV file
     csv_columns = [
@@ -469,7 +464,6 @@ def exportResults(results):
     writeToCSV(ofname, csv_columns, results['hierarchy'])
 
 # Entry point
-
 def init():
     with open(INPUT_FILENAME, mode="r") as ifile:
         # parse csv file
