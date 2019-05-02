@@ -22,6 +22,7 @@ def getAPIResponse(symbol):
     result = s.get(SERVICE_URL, params=payload)
     return result.json()
 
+
 # Convert from CPC IPC ref format A63H17/273
 # to IPC symbol format A63H0017273000 (zero padded, 4 digit for main
 # group, 6 digits for group)
@@ -60,7 +61,7 @@ def formatCPCtoIPC(symbol):
     """
 
     pos_subcode = symbol.find('/')
-    if pos_subcode > 0: 
+    if pos_subcode > 0:
         # Pad to the left and cut
         group = '0000' + symbol[4:pos_subcode]
         group = group[-4:]
@@ -75,6 +76,7 @@ def formatCPCtoIPC(symbol):
         return symbol[0:4] + group + '000000'
     else: # unknown format
         return symbol
+
 
 # A description is:
 # ipc_position: The position that the IPC symbol belongs to. This is the symbol of the 3rd level.
@@ -132,6 +134,7 @@ def makeIPCDescription(symbolInfo):
         'level': ipc_level
     }
 
+
 # ipc_position: the first three levels symbol.
 # section: The title of the level, that means only the first part of the description (Uppercases).
 # class: The same as section.
@@ -187,6 +190,7 @@ def makeIPCPosition(symbolInfo):
         'full_subclass': ipc_full_subclass,
     }
 
+
 # description: The direct, simple description of the international patent classification
 def makeIPCListItem(symbolData):
     """
@@ -219,6 +223,7 @@ def makeIPCListItem(symbolData):
     return {
         'description': ipc_description,
     }
+
 
 # ancestor: The preceding level of the ipc_class_level (previous level)
 # parent: The symbol of the section level (first level)
@@ -256,6 +261,7 @@ def makeIPCHierarchy(symbolInfo):
         'parent': ipc_parent,
         'ancestor': ipc_ancestor
     }
+
 
 def getIPCStructures(rawSymbol):
     """
@@ -321,6 +327,7 @@ def getIPCStructures(rawSymbol):
 
     return result
 
+
 def writeToCSV(output_filename, csv_columns, data):
     """
     Writes an array to a tab-separated csv file in the results directory.
@@ -360,6 +367,7 @@ def writeToCSV(output_filename, csv_columns, data):
     except IOError as e:
         print("I/O error({0}): {1}".format(e.errno, e.strerror))
 
+
 def cleanTitles(s):
     """
     Cleans a title string
@@ -386,6 +394,7 @@ def cleanTitles(s):
     output = ' '.join(w for w in r.split(" ") if w.isupper())
     output = output.title()
     return output
+
 
 def cleanText(s):
     """
@@ -417,6 +426,7 @@ def cleanText(s):
     cleaned = cleaned.replace("-.", "-")
     return cleaned
 
+
 def addDot(s):
     """
     Adds a dot and space before every uppercase letter that comes after a space
@@ -434,6 +444,7 @@ def addDot(s):
     """
     result = re.sub(r"(?!^)(?=\s[A-Z])", ". ", s)
     return result
+
 
 # This writes the results to files
 def exportResults(results):
@@ -462,6 +473,7 @@ def exportResults(results):
     csv_columns = [ 'ipc_class_level', 'ancestor', 'parent', 'ipc_version' ]
     ofname = '04_ipc_hierarchy.output.csv'
     writeToCSV(ofname, csv_columns, results['hierarchy'])
+
 
 # Entry point
 def init():
@@ -493,5 +505,6 @@ def init():
             line.update(str(index) + ' rows processed')
 
         exportResults(results)
+
 
 init()
