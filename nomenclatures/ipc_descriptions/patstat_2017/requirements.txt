@@ -1,0 +1,7 @@
+certifi==2019.3.9
+chardet==3.0.4
+colorama==0.4.1
+draftlog==2.1.9
+idna==2.8
+requests==2.21.0
+urllib3==1.24.2

@@ -18,7 +18,7 @@ In this example, 33/49 has a link to its parents 33/487 and 33/483, but 33/50 is
 The aim of this work his to rebuild each sentence for a given IPC code from its parent classes, in a more human readable way.
 
 ## Selection of the IPC codes
-If you are using a MySQL server, you can reproduce the scripts that are in [01_create_ ipc_class_level_list.sql](01_create_ ipc_class_level_list.sql), in order to produce the list of ipc code you want to look for.
+If you are using a MySQL server, you can reproduce the scripts that are in [01_create_ipc_code_list.sql](sql/01_create_ipc_code_list.sql), in order to produce the list of ipc code you want to look for.
 
 | last_ipc_version | NbDistinctIPCcodes | NbAppln (with redundancies) | 
 | --- | --- | --- |
@@ -34,29 +34,81 @@ If you are using a MySQL server, you can reproduce the scripts that are in [01_c
 | 2013-01-01 | 680 | 1285133 |
 | 2014-01-01 | 336 | 619669 |
 
-In the csv file [03_01_abstract_from_ipc_input.csv](03_01_abstract_from_ipc_input.csv) you will be able to find all the codes that are inside our patstat production version, with the attributs: 
-* **last_ipc_version**: when a ipc code is used in different ipc version, last_ipc_version store the more recent version;
+**Note**: As we have applied this process to two versions of patstat database (2014 and 2017) with data from IPC 2016 and 2017 accordingly, you will find two folders with nearly identical content (patstat_2014 and patstat_2017).
+
+In the csv files:
+- [03_01_abstract_from_ipc_input.csv](patstat_2014/03_01_abstract_from_ipc_input.csv) for Patstat 2014
+- [ipc_codes_input.csv](patstat_2017/ipc_codes_input.csv) for Patstat 2017
+
+You will find all the codes that are inside our patstat production version, with the attributes: 
+* **last_ipc_version**: when a ipc code is used in different ipc version, last_ipc_version store the more recent version.
 * **NbAppln**: raw volumes of all applications (with redundancies) for a given ipc code. For all patents, more than 71 000 distinct ipc codes were found.
 
-## Setting up the virtual machine
+## Getting descriptions for IPC Codes
 
 [NICTA](http://www.data61.csiro.au/) developped in 2013 a set of API to query the patent classifications (IPC, CPC, USPC). This API is available [here](http://pat-clas.t3as.org/) and the code on [github](https://github.com/NICTA/t3as-pat-clas). Unfortunately, this implementation has unmet java dependencies and is based on IPC / CPC / USPC 2013 data, which is partly not available anymore on internet and not up to date.
 
-[Cambialens](https://github.com/cambialens) forked the project and updated it to make it work with 2016 data. It is the repository we will use here to build our own server to set the API (it's much faster than using a remote API).
+[Cambialens](https://github.com/cambialens) forked the project and have been updating it to make it work with data from recent years. This is what we will use to get descriptions for IPC codes.
+
+### Setting up a virtual machine
+
+We set up Cambialens' project in a local virtual machine (VM) in order to have our own server running the API, it's much faster than using a remote API.
 
 ### Virtualization software
 
-You can use any virtualization software. Its installation on the host machine is beyond the scope of this tutorial. In our case, we used [VirtualBox](https://www.virtualbox.org/).
+To run the _VM_ we need a virtualization software, for us the software that fits our goals is _Virtualbox_ mainly because is a simple and an open source solution. 
+
+You can use any virtualization software. Its installation on the host machine is beyond the scope of this tutorial. In our case, we used [VirtualBox](https://www.virtualbox.org/). To install and configure it you can refer to the following urls: 
+
+[Download VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+_Pages 34-43_
+
+[VirtualBox UserManual](http://download.virtualbox.org/virtualbox/5.1.18/UserManual.pdf)
+
+### OVA Files
+
+After having a virtualization software, the next step is to run the project in a virtual machine.
+
+We have prepared OVA files (virtual machine files that you can import into your environment) with the API already set up and ready to run.
+
+- Project with IPC 2016.01 database: [PatentApi.ova](https://cloud.esiee.fr/index.php/s/ZhRXSFum4DrFSu1/download) - Size: 2,2gb
+
+Here is a graphical tutorial on how to import and export virtual machines so you can use this OVA file:
+
+[Tutorial: Importing and Exporting Virtual Machines](https://software.grok.lsu.edu/article.aspx?articleid=13838)
+
+These are the credentials for the VMs so you can login when you have the one you need up and running:
+
+```
+User: user
+Password: user 
+```
+
+Finally, to launch t3sa (API) you have to type and execute the next command in the VM's _terminal_:
+
+```
+cd t3as-pat-clas/pat-clas-service
+mvn tomcat7:run
+```
+
+To be able to access the API from your host PC, you have to forward one of the ports of the _host machine_ (The machine that host the VM) to the port used by the API in the _guest machine (VM)_, which is _port 8080_ for the 2016 version.
+
+This can be done in the menu of Virtualbox “Machine>Settings>Network>Avanced>Port forwarding”. And there you can create a new rule putting as _“Host Port”_ the port that you want on your PC and _“Guest Port”_ 8080, and save the changes.
+
+With this, you are ready to run our scripts to query the API.
 
 ### Guest server
 
-We used [Ubuntu Server 16.04](https://www.ubuntu.com). You can mostly use any linux distribution, please adjust the package manager command if your OS is not using apt.
+You can skip this section if you do not want to create your own VM with the API from scratch.
+
+We used [Ubuntu Server](https://www.ubuntu.com). You can mostly use any linux distribution, please adjust the package manager command if your OS is not using apt.
 
 #### Installation
 
 *Please refer to the manual of your virtualization software if you are not using VirtualBox.*
 
-1. Download from [Ubuntu website](https://www.ubuntu.com) the installation image of Ubuntu Server 16.04 LTS.
+1. Download from [Ubuntu website](https://www.ubuntu.com) the installation image of Ubuntu Server, whatever the current LTS version.
 2. Create a new virtual machine, set the name (whatever you want), the type as linux, the version as 'Ubuntu (64bits).'
 3. Set the base memory as 1.5 Gb (VirtualBox recommends less, but you will run short of memory if you leave the default value), and a hard drive of 50 Gb (if you set a dynamic size, it will use only what it needs).
 4. Start the VM and select the ISO file downloaded from Ubuntu server.
@@ -69,58 +121,50 @@ We used [Ubuntu Server 16.04](https://www.ubuntu.com). You can mostly use any li
 1. Update & Upgrade Ubuntu `sudo apt update && sudo apt dist-upgrade`
 2. Install Git, Maven, OpenJDK `sudo apt install openjdk-8-jdk maven git`
 3. Clone cambialens' repository `git clone https://github.com/cambialens/t3as-pat-clas.git`
+
+For the 2016 version:
+
 4. Checkout the branch patcite `git checkout patcite`
 5. You can now follow the instructions in the README file:
     1. Go to the data folder `cd ./t3as-pat-clas/data`.
-		2. Run the download script `./download.sh`. It should fail downloading the file from USPTO (right now it is not available), and consequently stop the script. If it is the case, remove all the lines related to USPC (including the url that points to uspto.gov) from download.sh (you can edit it with `nano download.sh`) and run the script again.
-		3. If you could not download files from USPTO, edit package.sh before running it, and remove the "uspc" reference (line 55). Then run `./package.sh`
-    4. You should have now the indexes for CPC and IPC. The server will not run without indexes for USPC, but as the file is not available at uspto.gov right now, the trick is to copy one the other index (cpc or ipc) to uspc. You can do it with `cp cpcIndexExactSug uspcIndexExactSug && cp cpcIndexFuzzySug uspcIndexFuzzySug`. REMEMBER! The information of USPC will not be valid, so do not use this trick if you want to use the API for USPC.
-    5. Compile the code `cd .. && maven`
+		1. Run the download script `./download.sh`. It should fail downloading the file from USPTO (right now it is not available), and consequently stop the script. If it is the case, remove all the lines related to USPC (including the url that points to uspto.gov) from download.sh (you can edit it with `nano download.sh`) and run the script again.
+		2. If you could not download files from USPTO, edit package.sh before running it, and remove the "uspc" reference (line 55). Then run `./package.sh`
+    1. You should have now the indexes for CPC and IPC. The server will not run without indexes for USPC, but as the file is not available at uspto.gov right now, the trick is to copy one the other index (cpc or ipc) to uspc. You can do it with `cp cpcIndexExactSug uspcIndexExactSug && cp cpcIndexFuzzySug uspcIndexFuzzySug`. REMEMBER! The information of USPC will not be valid, so do not use this trick if you want to use the API for USPC.
+    2. Compile the code `cd .. && maven`
+    3. If you have no errors during the compilation, you can run the API with `cd t3as-pat-clas/pat-clas-service/ && mvn tomcat7:run`
+
+For the 2017 version:
+
+4. You can now follow the instructions in the README file:
+    1. Go to the data folder `cd ./t3as-pat-clas/data`.
+		2. Run the download script `./download.sh`.
+		3. Run `./package.sh`
+    5. Compile the code from the project's root folder `cd .. && mvn`
     6. If you have no errors during the compilation, you can run the API with `cd t3as-pat-clas/pat-clas-service/ && mvn tomcat7:run`
-
-
-## Accessing the API
-
-You need to be able to reach the port 8080 to query the API. In VirtualBox, the easiest way is to go to VM network settings and forward one of the host port to the 8080 guest port.
-
-The main idea of the _VM (virtual machine)_ is communicated directly from our LocalHost to the _t3as API_ project, in that way the load process could be much less than using directly the _t3as webpage_. For this we use an _OVA file (Open Virtualization Format)_, it is an open standard for packaging and distributing virtual appliance, that a file was created by Francois Perruchas, the file can be downloaded here: (The OVA size is 2,2gb)
-
-[Download PatentApi.ova](https://cloud.esiee.fr/index.php/s/ZhRXSFum4DrFSu1/download)
-
-
-To run the _VM_ we need a virtualization software, for us the software that fits our goals is _Virtualbox_ mainly because is a simple and an open source solution. To install and configure it you can refer to the follow urls: 
-
-[Download VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-
-_Pages 34-43_
-
-[VirtualBox UserManual](http://download.virtualbox.org/virtualbox/5.1.18/UserManual.pdf)
-
-The next step is run our OVA file, for this you have to import the virtual machine into VirtualBox software, here is a graphical tutorial how you can do this:
-
-[Tutorial: Importing and Exporting Virtual Machines](https://software.grok.lsu.edu/article.aspx?articleid=13838)
-
-After our VM has been created and is running we proceed to login in with the next credentials:
-
-```
-User: user
-Password: user 
-```
-
-Finally to launch the t3sa in our VM you have to type and execute the next command in the _terminal_:
-
-```
-cd t3as-pat-clas/pat-clas-service
-mvn clean install tomcat7:run
-```
-
-To be able to access the API from your host PC, you have to follow one of the ports of the _host machine_ (The machine that host the VM) to the _port 8080_ of the VM. This can be done in the menu of Virtualbox “Machine>Settings>Network>Avanced>Port forwarding”. And there you can create a new rule putting as _“Host Port”_ the port that you want on your PC and _“Guest Port”_ 8080, and save the changes.
 
 ## Python script to interact with the VM
 
-Inside the project you can find a script wrote in python in which is possible to communicate with the local API that we previously build. When you execute it "03_02_abstract_from_ipc.py", what it does is read from the cvs file "03_01_abstract_from_ipc_input.csv" all the IPC codes and confront each one returning the necessary data to create the follow data structures: '01_position.cvs' '02_description.cvs', '03_ipc.cvs', '04_hierarchy.cvs'. 
+There are Python scripts in both patstat_2014 and patstat_2017 that make use of the files generated from the database and the corresponding APIs running in virtual machines and produce the desired results.
 
-To run the script is required you have installed python2
+For Patstat 2014:
+
+**Python 2 required.**
+
+In order to run the script: `python 03_02_abstract_from_ipc.py`. It takes some minutes to run. What it does is read from the cvs file "03_01_abstract_from_ipc_input.csv" all the IPC codes and confront each one returning the necessary data to create the follow data structures: '01_position.cvs' '02_description.cvs', '03_ipc.cvs', '04_hierarchy.cvs'.
+
+For Patstat 2017:
+
+**Python 3 required.**
+
+We provided a Pipfile in case you use `pipenv`, if not, you will first have to install dependencies with:
+
+`pip install -r requirements.txt`
+
+And then you can run the script with:
+
+`python abstract_from_ipc.py`
+
+This script reads the input file `ipc_codes_input.csv`, queries the API with this information, and produces the structures described below in 4 output files under the  `results` subfolder
 
 ## Collecting the descriptions
 
