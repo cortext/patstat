@@ -8,10 +8,10 @@ import os
 
 draft = draftlog.inject()
 
-SERVICE_URL = 'http://localhost:8081/rest/v1.0/IPC/ancestorsAndSelf'
+SERVICE_URL = 'http://localhost:3117/rest/v1.0/IPC/ancestorsAndSelf'
 IPC_DB_VERSION = '2017.01'
 INPUT_FILENAME = 'ipc_codes_input.csv'
-RESULT_FOLDER = 'results'
+RESULT_FOLDER = 'results_new'
 
 s = requests.Session()
 
@@ -112,22 +112,30 @@ def makeIPCDescription(symbolInfo):
         A dictionary with the symbol's corresponding 'ipc_position', 'ipc_desc'
         and 'level'
     """
+    symbol = symbolInfo[-1]['symbol']
+
     ipc_position = symbolInfo[2]['symbol']
-
-    ipc_desc = ''
-    # Below the third level
-    for element in symbolInfo[3:]:
-        # Clean and append
-        elementText = element['textBody'].replace('\n', ' ')
-        ipc_desc += elementText + ' '
-
-    # Format if theres anything to format
-    if ipc_desc:
-        ipc_desc = addDot(ipc_desc[:-1]) + '.'
-        ipc_desc = cleanText(ipc_desc)
 
     # Symbol's level. It is in the array's last element.
     ipc_level = symbolInfo[-1]['level']
+
+    ipc_desc = ''
+
+    # Special case for level 2 symbols
+    if symbol == ipc_position:
+        ipc_level = symbolInfo[2]['level']
+        ipc_desc = symbolInfo[2]['textBody']
+        ipc_desc = cleanPosition(ipc_desc)
+    else:
+        # Below the third level
+        for element in symbolInfo[3:]:
+            # Clean and append
+            elementText = element['textBody'].replace('\n', ' ')
+            ipc_desc += elementText + ' '
+        # Format if theres anything to format
+        if ipc_desc:
+            ipc_desc = addDot(ipc_desc[:-1]) + '.'
+            ipc_desc = cleanText(ipc_desc)
 
     return {
         'ipc_position': ipc_position,
@@ -397,12 +405,30 @@ def cleanTitles(s):
         first letters are uppercase)
     """
 
-    r = re.sub('\n', ' ', s)
-    r = re.sub(r"\s\s+", " ", r)
-    output = ' '.join(w for w in r.split(" ") if w.isupper())
-    output = output.title()
+    r = replaceBreaks(s)
+    r = singleSpace(r)
+    r = filterUppercase(r)
+    output = r.title()
     return output
 
+def cleanPosition(text):
+    r = replaceBreaks(text)
+    r = singleSpace(r)
+    r = filterUppercase(r)
+    output = r.lower().capitalize()
+    return output
+
+def singleSpace(text):
+    return re.sub(r"\s\s+", " ", text)
+
+def replaceBreaks(text):
+    return re.sub('\n', ' ', text)
+
+def filterUppercase(text):
+    return ' '.join(w for w in text.split(" ") if w.isupper())
+
+def formatAsTitle(text):
+    return text.title()
 
 def cleanText(s):
     """
@@ -504,7 +530,9 @@ def init():
 
             # consctruct structures
             res = getIPCStructures(row[0])
-            results['position'].append(res[0])
+            position_values = dict((key, value) for key, value in res[0].items() if key != 'ipc_version').values()
+            if any(position_values):
+                results['position'].append(res[0])
             results['description'].append(res[1])
             results['list_item'].append(res[2])
             results['hierarchy'].append(res[3])
