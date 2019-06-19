@@ -72,7 +72,9 @@ After having a virtualization software, the next step is to run the project in a
 
 We have prepared OVA files (virtual machine files that you can import into your environment) with the API already set up and ready to run.
 
-- Project with IPC 2016.01 database: [PatentApi.ova](https://cloud.esiee.fr/index.php/s/ZhRXSFum4DrFSu1/download) - Size: 2,2gb
+- IPC 2016.01 database: [ipc-service-2014.ova](http://tiny.cc/0x0h8y) - Size: 1,6G
+- IPC 2017.01 database: [ipc-service-2017.ova](http://tiny.cc/6z1h8y) - Size: 1,6G
+- IPC 2018.01 database: [ipc-service-2018.ova](http://tiny.cc/c11h8y) - Size: 1,6G
 
 Here is a graphical tutorial on how to import and export virtual machines so you can use this OVA file:
 
@@ -88,11 +90,11 @@ Password: user
 Finally, to launch t3sa (API) you have to type and execute the next command in the VM's _terminal_:
 
 ```
-cd t3as-pat-clas/pat-clas-service
-mvn tomcat7:run
+cd app
+./start.sh
 ```
 
-To be able to access the API from your host PC, you have to forward one of the ports of the _host machine_ (The machine that host the VM) to the port used by the API in the _guest machine (VM)_, which is _port 8080_ for the 2016 version.
+To be able to access the API from your host PC, you have to forward one of the ports of the _host machine_ (The machine that host the VM) to the port used by the API in the _guest machine (VM)_, which is _port 8080_ for all versions.
 
 This can be done in the menu of Virtualbox “Machine>Settings>Network>Avanced>Port forwarding”. And there you can create a new rule putting as _“Host Port”_ the port that you want on your PC and _“Guest Port”_ 8080, and save the changes.
 
