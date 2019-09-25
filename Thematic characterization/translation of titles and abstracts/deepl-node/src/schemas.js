@@ -28,6 +28,16 @@ const texts = joi.array().items(joi.string()).min(1).max(50).required()
     return errors;
   });
 
+const singleText = joi.string().required()
+  .error((errors) => {
+    errors.forEach((err) => {
+      if (err.type === 'any.required') {
+        err.message = 'You must provide an input text';
+      }
+    });
+    return errors;
+  });
+
 const key = joi.string().required()
   .error((errors) => {
     errors.forEach((err) => {
@@ -48,8 +58,20 @@ const targetLanguage = joi.string().required().valid(languages)
     return errors;
   });
 
+  const sourceLanguage = joi.string().required().valid(languages)
+  .error((errors) => {
+    errors.forEach((err) => {
+      if (err.type === 'any.required') {
+        err.message = 'You must provide a source language';
+      }
+    });
+    return errors;
+  });
+
 module.exports = {
   texts,
+  singleText,
   key,
   targetLanguage,
+  sourceLanguage,
 };

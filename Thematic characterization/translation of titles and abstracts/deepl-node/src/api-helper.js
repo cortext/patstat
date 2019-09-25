@@ -1,9 +1,26 @@
-const request = require('request-promise-native');
+const rp = require('request-promise-native');
+const Bottleneck = require('bottleneck');
 const http = require('http');
 const config = require('./config');
 
-const agent = new http.Agent();
-agent.maxSockets = 15;
+const limiter = new Bottleneck({
+  maxConcurrent: 5,
+  minTime: 200,
+});
+
+limiter.on("failed", async (error, jobInfo) => {
+  if (jobInfo.retryCount < 5) {
+    return 2000;
+  }
+});
+
+const request = limiter.wrap(rp);
+
+const agent = new http.Agent({
+  //keepAlive: true,
+  maxSockets: 15,
+  //maxFreeSockets: 5,
+});
 
 async function getBatchTranslation(inputTexts, targetLanguage, authKey) {
   const body = {
@@ -22,6 +39,24 @@ async function getBatchTranslation(inputTexts, targetLanguage, authKey) {
   return request(options);
 }
 
+async function getSingleTranslation(inputText, targetLanguage, sourceLanguage, authKey) {
+  const body = {
+    auth_key: authKey,
+    text: inputText,
+    source_lang: sourceLanguage,
+    target_lang: targetLanguage,
+  };
+  const options = {
+    method: 'POST',
+    uri: config.deeplUri,
+    form: body,
+    json: true,
+    pool: agent,
+  };
+  return request(options);
+}
+
 module.exports = {
   getBatchTranslation,
+  getSingleTranslation,
 };

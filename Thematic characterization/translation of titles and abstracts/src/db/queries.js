@@ -48,6 +48,7 @@ const {
    * Taken from {@link module:db/queries~config|config}.
    */
   columnForTranslation,
+  sourceLanguageColumn,
 } = config.db.table;
 
 const {
@@ -85,7 +86,7 @@ const queryNthRow = `
  * ordered according to {@link module:db/queries~idColumnName|idColumnName}.
  */
 const queryIdOffset = `
-  select ${idColumnName}, ${columnToTranslate}
+  select ${idColumnName}, ${columnToTranslate}, ${sourceLanguageColumn}
   from ${name}
   where ${idColumnName} > ?
   order by ${idColumnName} asc

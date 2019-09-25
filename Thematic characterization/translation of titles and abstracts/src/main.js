@@ -60,6 +60,7 @@ const {
    * Taken from the {@link module:main~config|config}.
    */
   columnToTranslate,
+  sourceLanguageColumn,
 } = config.db.table;
 
 const {
@@ -153,12 +154,46 @@ async function doWork(from, to, intervalSize) {
     const translatedRecords = records.map((record, index) => (
       {
         id: record.appln_id,
-        englishAbstract: translationResults[index],
+        translatedText: translationResults[index],
       }
     ));
     try {
       await Promise.all(
-        translatedRecords.map(record => db.updateEnglishField(record.id, record.englishAbstract)),
+        translatedRecords.map(record => db.updateEnglishField(record.id, record.translatedText)),
+      );
+    } catch (e) {
+      logger.info('Error updating fields');
+      logger.info(e);
+      throw e;
+    }
+  }
+  /* eslint-enable */
+}
+
+async function doWorkSingle(from, to, intervalSize) {
+  const dbWorker = new db.Worker(from, to, batchSize, intervalSize);
+  workers.push(dbWorker);
+  reporter.addWorker(dbWorker);
+  /* eslint-disable no-await-in-loop */
+  while (!dbWorker.done) {
+    const records = await dbWorker.getRecords();
+    const translationResults = await Promise.all(
+      records.map((record) => {
+        return translator.singleTranslate(
+          record[columnToTranslate],
+          record[sourceLanguageColumn]
+        );
+      })
+    );
+    const translatedRecords = records.map((record, index) => (
+      {
+        id: record.appln_id,
+        translatedText: translationResults[index],
+      }
+    ));
+    try {
+      await Promise.all(
+        translatedRecords.map(record => db.updateEnglishField(record.id, record.translatedText)),
       );
     } catch (e) {
       logger.info('Error updating fields');
@@ -192,7 +227,7 @@ function updateReport() {
 async function setupWork() {
   try {
     logger.info('Counting non-translated records');
-    nRows = await db.count();
+    nRows = 10000; // await db.count();
     logger.info(`Rows: ${nRows}`);
     logger.info(`Works: ${nConcurrentWorks}`);
     const intervalSize = Math.ceil(nRows / nConcurrentWorks);
@@ -203,7 +238,7 @@ async function setupWork() {
     }];
     /* eslint-disable no-await-in-loop */
     for (let i = 1; i < nConcurrentWorks - 1; i += 1) {
-      const previous = intervals[i - 1];
+      const previous = intervals[i - 1];  
       const left = previous.right;
       const right = await db.nthRowIndex((i + 1) * intervalSize);
       intervals.push({ left, right });
@@ -217,7 +252,7 @@ async function setupWork() {
       reporter.init(nRows);
       const report = setInterval(updateReport, 1000);
       await Promise.all(
-        intervals.map(int => doWork(int.left, int.right, intervalSize)),
+        intervals.map(int => doWorkSingle(int.left, int.right, intervalSize)),
       );
       setTimeout(() => {
         clearInterval(report);

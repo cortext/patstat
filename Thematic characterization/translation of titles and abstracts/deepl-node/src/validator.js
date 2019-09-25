@@ -2,7 +2,9 @@ const joi = require('joi');
 
 const {
   texts: textsSchema,
+  singleText: singleTextSchema,
   key: keySchema,
+  sourceLanguage: sourceLanguageSchema,
   targetLanguage: targetLanguageSchema,
 } = require('./schemas');
 
@@ -26,6 +28,16 @@ function validateBatchTranslate(inputTexts, targetLanguage, authKey) {
   ]);
 }
 
+function validateSingleTranslate(inputText, targetLanguage, sourceLanguage, authKey) {
+  return validateFunctionInput([
+    { input: inputText, schema: singleTextSchema },
+    { input: targetLanguage, schema: targetLanguageSchema },
+    { input: sourceLanguage, schema: sourceLanguageSchema },
+    { input: authKey, schema: keySchema },
+  ]);
+}
+
 module.exports = {
   validateBatchTranslate,
+  validateSingleTranslate,
 };

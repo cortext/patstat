@@ -9,5 +9,5 @@ module.exports = {
     'IT',
     'EN',
   ],
-  deeplUri: 'http://localhost:3000/v2/translate',  //  'https://api.deelp.com/v2/translate',
+  deeplUri: 'https://api.deepl.com/v2/translate', // http://localhost:9001/v2/translate', // 
 };

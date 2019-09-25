@@ -80,9 +80,21 @@ if (!key) {
  * using the deepl client library.
  */
 async function batchTranslate(texts) {
-  const result = await deepl.batchTranslate(texts, targetLanguage, key);
   try {
+    const result = await deepl.batchTranslate(texts, targetLanguage, key);
     return result.translations.map(translation => translation.text);
+  } catch (e) {
+    logger.info('Unexpected response from translation service');
+    logger.info(e);
+    throw e;
+  }
+}
+
+async function singleTranslate(text, sourceLanguage) {
+  try {
+    const formattedText = text[0].toUpperCase() + text.slice(1).toLowerCase(); 
+    const result = await deepl.singleTranslate(formattedText, targetLanguage, sourceLanguage.toUpperCase(), key);
+    return result.translations[0].text;
   } catch (e) {
     logger.info('Unexpected response from translation service');
     logger.info(e);
@@ -106,4 +118,5 @@ async function batchTranslate(texts) {
  */
 module.exports = {
   batchTranslate,
+  singleTranslate,
 };

@@ -59,4 +59,5 @@ module.exports = {
    * translation of the item in the same position of the input array.
    */
   batchTranslate: texts => service.batchTranslate(texts),
+  singleTranslate: (text, sourceLanguage) => service.singleTranslate(text, sourceLanguage),
 };
