@@ -36,6 +36,7 @@ This selection represents 2 394 385‬ distinct addresses. In order to increase 
    - Removing non alphanumerical characters (html codes, brackets, and some other special characters…): [normalise_specialChars](./01_geocoding/func_cleaning/normalise_specialChars.sql)
    - Normalising step: with first a basic transliteration and secondly a structure normalisation (e.g. space after comas or points): [normalise_specialChars](./01_geocoding/func_cleaning/norm_addr.sql)
    - Exclusions: finally, some meaningless values are excluded (e.g. deceased, verstorben etc.) when they do not contain geographical information.
+
 93,7% of the submitted addresses have received longitude and latitude coordinates for the geocoding process.
 
 ### Importing geocoding results
