@@ -33,8 +33,8 @@ There are 3 main steps to this enrichment.
 ### Preparing Patstat addresses for geocoding
 The [first step](./01_geocoding/00_prepare_addr.sql) is to prepare and store unique addresses from investors’ and applicants’ addresses which fall in our perimeter. We are focussing here on priority patents with artificial patents filed from 2000 (Laurens, P., Villard, L., Schoen, A. & Larédo, P., 2018, The artificial patents in the PATSTAT database: How much do they matter when computing indicators of internationalisation based on worldwide priority patents?. Scientometrics). 
 This selection represents 2 394 385‬ distinct addresses. In order to increase the geocoding efficiency, addresses are going thought three cleaning steps:
-   - Removing non alphanumerical characters (html codes, brackets, and some other special characters…): [normalise_specialChars](./01_geocoding/func_cleaning/normalise_specialChars.sql)
-   - Normalising step: with first a basic transliteration and secondly a structure normalisation (e.g. space after comas or points): [normalise_specialChars](./01_geocoding/func_cleaning/norm_addr.sql)
+   - Removing non alphanumerical characters (html codes, brackets, and some other special characters etc.): [normalise_specialChars](./01_geocoding/func_cleaning/normalise_specialChars.sql)
+   - Normalising step: with first a basic transliteration and secondly a structure normalisation (e.g. space after comas or points): [norm_addr](./01_geocoding/func_cleaning/norm_addr.sql)
    - Exclusions: finally, some meaningless values are excluded (e.g. deceased, verstorben etc.) when they do not contain geographical information.
 
 93,7% of the submitted addresses have received longitude and latitude coordinates for the geocoding process.
