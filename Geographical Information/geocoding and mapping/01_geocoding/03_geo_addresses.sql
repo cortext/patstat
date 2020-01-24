@@ -1,4 +1,4 @@
-# ddl for new address table
+-- ddl for new address table
 
 drop table if exists patstatAvr2017_lab.geo_addresses;
 
@@ -18,7 +18,7 @@ create table patstatAvr2017_lab.geo_addresses (
   key `iso_ctry_idx` (`iso_ctry`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-# copy its content from previous address table
+-- copy its content from previous address table
 
 insert into patstatAvr2017_lab.geo_addresses(addr_final, addr_final_norm, iso_ctry)
 select
@@ -26,7 +26,7 @@ select
 from
 	patstatAvr2017_lab.04_addr_list; # 7 635 653
 
-# from raw address table to geo_addresses using the addr_harm field (trimmed)
+-- from raw address table to geo_addresses using the addr_harm field (trimmed)
 
 select count(*) from geo_addresses; # 7 635 653
 select count(*) from geo_location_raw; # 2 394 385
@@ -42,15 +42,4 @@ set
 	big.confidence = small.confidence,
 	big.accuracy = small.accuracy,
 	big.layer = small.layer; # 2 447 106
-	
-
-
-
-
-
-
-
-
-
-
 

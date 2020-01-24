@@ -1,4 +1,4 @@
-# ddl for new geo table
+-- ddl for new geo table
 
 drop table if exists patstatAvr2017_lab.`geo_location`;
 CREATE TABLE patstatAvr2017_lab.`geo_location` (
@@ -13,14 +13,14 @@ CREATE TABLE patstatAvr2017_lab.`geo_location` (
   primary key (location_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-# insert the unique ones
+-- insert the unique ones
 
 insert into geo_location(label, longitude, latitude, city, region, country, iso3)
 select 
 	label, longitude, latitude, city, region, country, iso3
 from geo_location_raw where latitude is not null group by longitude, latitude, label; # 315 628
 
-# indexes
+-- indexes
 
 create index long_lat_idx using	btree on geo_location(longitude, latitude);
 create index label_idx using btree on geo_location(label(300));

@@ -1,4 +1,4 @@
-# ddl for pre geo table (address still there, not unique long, lat pairs)
+-- ddl for pre geo table (address still there, not unique long, lat pairs)
 
 drop table if exists geo_location_raw;
 create table patstatAvr2017_lab.`geo_location_raw` (
@@ -19,7 +19,7 @@ create table patstatAvr2017_lab.`geo_location_raw` (
   `location_id` int(11) default null
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-# load exported csv from sqlite into it
+-- load exported csv from sqlite into it
 
 load data local infile
 	'/home/luisd/tmp/geo_locations.csv'

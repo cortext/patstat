@@ -1,11 +1,11 @@
-# Propagate to bigger tables
+-- Propagate to bigger tables
 
-# Add address id
+-- Add address id
 
 alter table patstatAvr2017.applt_addr_ifris add addr_id int(11);
 alter table patstatAvr2017.invt_addr_ifris add addr_id int(11);
 
-# bring values from geo_addresses
+-- bring values from geo_addresses
 
 update
 	patstatAvr2017.applt_addr_ifris applt
